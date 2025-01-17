@@ -1,0 +1,252 @@
+name: backend
+
+services:
+
+  #Gateway service
+  gateway-service:
+    build:
+      context: ../gateway
+      dockerfile: Dockerfile
+    container_name: gateway-service
+    ports:
+      - $GATEWAY_MICROSERVICE_PORT:$GATEWAY_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $GATEWAY_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/gateway.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../gateway:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  #Auth service
+  auth-service:
+    build:
+      context: ../auth
+      dockerfile: Dockerfile
+    container_name: auth-service
+    ports:
+      - $AUTH_MICROSERVICE_PORT:$AUTH_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $AUTH_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/auth.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../auth:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  #Coms service
+  coms-service:
+    build:
+      context: ../coms
+      dockerfile: Dockerfile
+    container_name: coms-service
+    ports:
+      - $COMS_MICROSERVICE_PORT:$COMS_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $COMS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/coms.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../coms:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  #Examenes service
+  examenes-service:
+    build:
+      context: ../examenes
+      dockerfile: Dockerfile
+    container_name: examenes-service
+    ports:
+      - $EXAMENES_MICROSERVICE_PORT:$EXAMENES_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $EXAMENES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/examenes.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../examenes:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  #Facturacion service
+  facturacion-service:
+    build:
+      context: ../facturacion
+      dockerfile: Dockerfile
+    container_name: facturacion-service
+    ports:
+      - $FACTURACION_MICROSERVICE_PORT:$FACTURACION_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $FACTURACION_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/facturacion.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../facturacion:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Farmacia Service
+  farmacia-service:
+    build:
+      context: ../farmacia
+      dockerfile: Dockerfile
+    container_name: farmacia-service
+    ports:
+      - $FARMACIA_MICROSERVICE_PORT:$FARMACIA_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $FARMACIA_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/farmacia.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../farmacia:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Hospitalizacion Service
+  hospitalizacion-service:
+    build:
+      context: ../hospitalizacion
+      dockerfile: Dockerfile
+    container_name: hospitalizacion-service
+    ports:
+      - $HOSPITALIZACION_MICROSERVICE_PORT:$HOSPITALIZACION_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $HOSPITALIZACION_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/hospitalizacion.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../hospitalizacion:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Medicos Service
+  medicos-service:
+    build:
+      context: ../medicos
+      dockerfile: Dockerfile
+    container_name: medicos-service
+    ports:
+      - $MEDICOS_MICROSERVICE_PORT:$MEDICOS_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $MEDICOS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/medicos.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../medicos:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  #Pacientes service
+  pacientes-service:
+    build:
+      context: ../pacientes
+      dockerfile: Dockerfile
+    container_name: pacientes-service
+    ports:
+      - $PACIENTES_MICROSERVICE_PORT:$PACIENTES_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $PACIENTES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/pacientes.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../pacientes:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Personal Service
+  personal-service:
+    build:
+      context: ../personal
+      dockerfile: Dockerfile
+    container_name: personal-service
+    ports:
+      - $PERSONAL_MICROSERVICE_PORT:$PERSONAL_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $PERSONAL_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/personal.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../personal:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Users Service
+  users-service:
+    build:
+      context: ../users
+      dockerfile: Dockerfile
+    container_name: users-service
+    ports:
+      - $USERS_MICROSERVICE_PORT:$USERS_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $USERS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/users.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../users:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: $DOCKER_SUBNET
