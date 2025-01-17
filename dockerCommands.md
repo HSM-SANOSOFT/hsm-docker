@@ -1,5 +1,6 @@
-docker-compose down
+#General
 
+docker-compose down
 docker system prune
 docker volumes prune
 docker image prune
