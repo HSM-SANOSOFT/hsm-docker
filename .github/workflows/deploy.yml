@@ -19,4 +19,4 @@ jobs:
                 docker pull ghcr.io/hsm-sanosoft/$SERVICE_NAME:latest
 
                 echo "Restarting $SERVICE_NAME container..."
-                docker-compose --env-file ./envs/global.env up -d --no-deps $SERVICE_NAME
+                docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps $SERVICE_NAME
