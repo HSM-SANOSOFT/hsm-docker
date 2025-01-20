@@ -1,0 +1,28 @@
+name: HSM-BACKEND
+
+services:
+
+  #Auth service
+  HSM-BE-AUTH-MS:
+    image: ghcr.io/hsm-sanosoft/hsm-be-auth-ms:latest 
+    container_name: HSM-BE-AUTH-MS
+    ports:
+      - $AUTH_MICROSERVICE_PORT:$AUTH_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $AUTH_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/auth.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: $DOCKER_SUBNET
