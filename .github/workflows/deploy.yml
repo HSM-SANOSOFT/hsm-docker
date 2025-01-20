@@ -1,0 +1,22 @@
+name: Deploy Application
+
+on:
+    workflow_run:
+        workflows: ["CI/CD for Microservices"]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        runs-on: self-hosted
+
+        steps:
+            - name: Pull and Deploy Microservices
+              env:
+                SERVICE_NAME: HSM-BE-AUTH-MS
+              run: |
+                echo "Pulling the latest image for $SERVICE_NAME..."
+                docker pull ghcr.io/hsm-sanosoft/$SERVICE_NAME:latest
+
+                echo "Restarting $SERVICE_NAME container..."
+                docker-compose --env-file ./envs/global.env up -d --no-deps $SERVICE_NAME
