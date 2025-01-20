@@ -2,9 +2,28 @@ name: HSM-BACKEND
 
 services:
 
+  #Gateway service
+  HSM-BE-GATEWAY-MS:
+    build:
+      context: ../HSM-BE-GATEWAY-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-GATEWAY-MS
+    ports:
+      - $GATEWAY_MICROSERVICE_PORT:$GATEWAY_MICROSERVICE_PORT
+    networks:
+      app_network:
+        ipv4_address: $GATEWAY_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/gateway.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
   #Auth service
   HSM-BE-AUTH-MS:
-    image: ghcr.io/hsm-sanosoft/hsm-be-auth-ms:latest 
+    image: ghcr.io/hsm-sanosoft/hsm-be-auth-ms:latest
     container_name: HSM-BE-AUTH-MS
     ports:
       - $AUTH_MICROSERVICE_PORT:$AUTH_MICROSERVICE_PORT
@@ -19,6 +38,158 @@ services:
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
+  #Coms service
+  HSM-BE-COMS-MS:
+    build:
+      context: ../HSM-BE-COMS-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-COMS-MS
+    networks:
+      app_network:
+        ipv4_address: $COMS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/coms.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  #Examenes service
+  HSM-BE-EXAMENES-MS:
+    build:
+      context: ../HSM-BE-EXAMENES-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-EXAMENES-MS
+    networks:
+      app_network:
+        ipv4_address: $EXAMENES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/examenes.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  #Facturacion service
+  HSM-BE-FACTURACION-MS:
+    build:
+      context: ../HSM-BE-FACTURACION-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-FACTURACION-MS
+    networks:
+      app_network:
+        ipv4_address: $FACTURACION_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/facturacion.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  # Farmacia Service
+  HSM-BE-FARMACIA-MS:
+    build:
+      context: ../HSM-BE-FARMACIA-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-FARMACIA-MS
+    networks:
+      app_network:
+        ipv4_address: $FARMACIA_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/farmacia.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  # Hospitalizacion Service
+  HSM-BE-HOSPITALIZACION-MS:
+    build:
+      context: ../HSM-BE-HOSPITALIZACION-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-HOSPITALIZACION-MS
+    networks:
+      app_network:
+        ipv4_address: $HOSPITALIZACION_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/hospitalizacion.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  # Medicos Service
+  HSM-BE-MEDICOS-MS:
+    build:
+      context: ../HSM-BE-MEDICOS-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-MEDICOS-MS
+    networks:
+      app_network:
+        ipv4_address: $MEDICOS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/medicos.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  #Pacientes service
+  HSM-BE-PACIENTES-MS:
+    build:
+      context: ../HSM-BE-PACIENTES-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-PACIENTES-MS
+    networks:
+      app_network:
+        ipv4_address: $PACIENTES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/pacientes.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  # Personal Service
+  HSM-BE-PERSONAL-MS:
+    build:
+      context: ../HSM-BE-PERSONAL-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-PERSONAL-MS
+    networks:
+      app_network:
+        ipv4_address: $PERSONAL_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/personal.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+
+  # Users Service
+  HSM-BE-USERS-MS:
+    build:
+      context: ../HSM-BE-USERS-MS
+      dockerfile: Dockerfile
+    container_name: users-service
+    networks:
+      app_network:
+        ipv4_address: $USERS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/users.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
 
 networks:
   app_network:
