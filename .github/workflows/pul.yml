@@ -3,7 +3,7 @@ name: pull-changes
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
     pull:
         runs-on: self-hosted
