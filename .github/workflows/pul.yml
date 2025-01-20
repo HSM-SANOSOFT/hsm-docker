@@ -1,0 +1,18 @@
+name: pull-changes
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+    pull:
+        runs-on: self-hosted
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+            -   name: pull
+                run: |
+                    echo "Navigating to directory: ${{secrets.PATH_DOCKER_COMPOSE}}"
+                    cd ${{secrets.PATH_DOCKER_COMPOSE}}
+                    echo "Pulling changes from main branch"
+                    git pull origin main
