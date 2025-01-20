@@ -13,7 +13,7 @@
 1. docker-compose --env-file ./envs/global.env up --build
 2. docker-compose --env-file ./envs/global.env build
 3. docker-compose --env-file ./envs/global.env up -d
-24. docker-compose --env-file ./envs/global.env up -d --no-build
+4. docker-compose --env-file ./envs/global.env up -d --no-build
 
 # Gateway Service
 1. docker-compose logs -f gateway-service

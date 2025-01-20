@@ -5,7 +5,7 @@ services:
   #Gateway service
   gateway-service:
     build:
-      context: ../gateway
+      context: ../HSM-BE-GATEWAY-MS
       dockerfile: Dockerfile
     container_name: gateway-service
     ports:
@@ -20,14 +20,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../gateway:/app
+      - ../HSM-BE-GATEWAY-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   #Auth service
   auth-service:
     build:
-      context: ../auth
+      context: ../HSM-BE-AUTH-MS
       dockerfile: Dockerfile
     container_name: auth-service
     ports:
@@ -42,14 +42,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../auth:/app
+      - ../HSM-BE-AUTH-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   #Coms service
   coms-service:
     build:
-      context: ../coms
+      context: ../HSM-BE-COMS-MS
       dockerfile: Dockerfile
     container_name: coms-service
     ports:
@@ -64,14 +64,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../coms:/app
+      - ../HSM-BE-COMS-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   #Examenes service
   examenes-service:
     build:
-      context: ../examenes
+      context: ../HSM-BE-EXAMENES-MS
       dockerfile: Dockerfile
     container_name: examenes-service
     ports:
@@ -86,14 +86,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../examenes:/app
+      - ../HSM-BE-EXAMENES-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   #Facturacion service
   facturacion-service:
     build:
-      context: ../facturacion
+      context: ../HSM-BE-FACTURACION-MS
       dockerfile: Dockerfile
     container_name: facturacion-service
     ports:
@@ -108,14 +108,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../facturacion:/app
+      - ../HSM-BE-FACTURACION-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Farmacia Service
   farmacia-service:
     build:
-      context: ../farmacia
+      context: ../HSM-BE-FARMACIA-MS
       dockerfile: Dockerfile
     container_name: farmacia-service
     ports:
@@ -130,14 +130,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../farmacia:/app
+      - ../HSM-BE-FARMACIA-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Hospitalizacion Service
   hospitalizacion-service:
     build:
-      context: ../hospitalizacion
+      context: ../HSM-BE-HOSPITALIZACION-MS
       dockerfile: Dockerfile
     container_name: hospitalizacion-service
     ports:
@@ -152,14 +152,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../hospitalizacion:/app
+      - ../HSM-BE-HOSPITALIZACION-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Medicos Service
   medicos-service:
     build:
-      context: ../medicos
+      context: ../HSM-BE-MEDICOS-MS
       dockerfile: Dockerfile
     container_name: medicos-service
     ports:
@@ -174,14 +174,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../medicos:/app
+      - ../HSM-BE-MEDICOS-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   #Pacientes service
   pacientes-service:
     build:
-      context: ../pacientes
+      context: ../HSM-BE-PACIENTES-MS
       dockerfile: Dockerfile
     container_name: pacientes-service
     ports:
@@ -196,14 +196,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../pacientes:/app
+      - ../HSM-BE-PACIENTES-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Personal Service
   personal-service:
     build:
-      context: ../personal
+      context: ../HSM-BE-PERSONAL-MS
       dockerfile: Dockerfile
     container_name: personal-service
     ports:
@@ -218,14 +218,14 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../personal:/app
+      - ../HSM-BE-PERSONAL-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Users Service
   users-service:
     build:
-      context: ../users
+      context: ../HSM-BE-USERS-MS
       dockerfile: Dockerfile
     container_name: users-service
     ports:
@@ -240,7 +240,7 @@ services:
       - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
-      - ../users:/app
+      - ../HSM-BE-USERS-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
