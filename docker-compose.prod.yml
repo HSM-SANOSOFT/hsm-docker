@@ -158,9 +158,7 @@ services:
 
   # Users Service
   HSM-BE-USERS-MS:
-    build:
-      context: ../HSM-BE-USERS-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-users-ms:latest
     container_name: users-service
     networks:
       app_network:
