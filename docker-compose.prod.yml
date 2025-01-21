@@ -51,20 +51,20 @@ services:
       - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
-    #COMMON service
-    HSM-BE-COMMON-MS:
-      image: ghcr.io/hsm-sanosoft/hsm-be-common-ms:latest
-      container_name: HSM-BE-COMMON-MS
-      networks:
-        app_network:
-          ipv4_address: $COMMON_MICROSERVICE_HOST
-      env_file:
-        - ./envs/global.env
-        - ./envs/common.env
-      environment:
-        - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-        - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
-      restart: unless-stopped
+  #COMMON service
+  HSM-BE-COMMON-MS:
+    image: ghcr.io/hsm-sanosoft/hsm-be-common-ms:latest
+    container_name: HSM-BE-COMMON-MS
+    networks:
+      app_network:
+        ipv4_address: $COMMON_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/common.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
 
   #Examenes service
   HSM-BE-EXAMENES-MS:
