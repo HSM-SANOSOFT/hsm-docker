@@ -3,11 +3,11 @@ name: backend
 services:
 
   #Gateway service
-  gateway-service:
+  HSM-BE-GATEWAY-MS:
     build:
       context: ../HSM-BE-GATEWAY-MS
       dockerfile: Dockerfile
-    container_name: gateway-service
+    container_name: HSM-BE-GATEWAY-MS
     ports:
       - $GATEWAY_MICROSERVICE_PORT:$GATEWAY_MICROSERVICE_PORT
     networks:
@@ -25,11 +25,11 @@ services:
     restart: unless-stopped
 
   #Auth service
-  auth-service:
+  HSM-BE-AUTH-MS:
     build:
       context: ../HSM-BE-AUTH-MS
       dockerfile: Dockerfile
-    container_name: auth-service
+    container_name: HSM-BE-AUTH-MS
     ports:
       - $AUTH_MICROSERVICE_PORT:$AUTH_MICROSERVICE_PORT
     networks:
@@ -47,13 +47,11 @@ services:
     restart: unless-stopped
 
   #Coms service
-  coms-service:
+  HSM-BE-COMS-MS:
     build:
       context: ../HSM-BE-COMS-MS
       dockerfile: Dockerfile
-    container_name: coms-service
-    ports:
-      - $COMS_MICROSERVICE_PORT:$COMS_MICROSERVICE_PORT
+    container_name: HSM-BE-COMS-MS
     networks:
       app_network:
         ipv4_address: $COMS_MICROSERVICE_HOST
@@ -68,14 +66,32 @@ services:
       - /app/node_modules
     restart: unless-stopped
 
+  #Coms service
+  HSM-BE-COMMON-MS:
+    build:
+      context: ../HSM-BE-COMMON-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-COMMON-MS
+    networks:
+      app_network:
+        ipv4_address: $COMMON_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/common.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../HSM-BE-COMMON-MS:/app
+      - /app/node_modules
+    restart: unless-stopped
+
   #Examenes service
-  examenes-service:
+  HSM-BE-EXAMENES-MS:
     build:
       context: ../HSM-BE-EXAMENES-MS
       dockerfile: Dockerfile
-    container_name: examenes-service
-    ports:
-      - $EXAMENES_MICROSERVICE_PORT:$EXAMENES_MICROSERVICE_PORT
+    container_name: HSM-BE-EXAMENES-MS
     networks:
       app_network:
         ipv4_address: $EXAMENES_MICROSERVICE_HOST
@@ -91,13 +107,11 @@ services:
     restart: unless-stopped
 
   #Facturacion service
-  facturacion-service:
+  HSM-BE-FACTURACION-MS:
     build:
       context: ../HSM-BE-FACTURACION-MS
       dockerfile: Dockerfile
-    container_name: facturacion-service
-    ports:
-      - $FACTURACION_MICROSERVICE_PORT:$FACTURACION_MICROSERVICE_PORT
+    container_name: HSM-BE-FACTURACION-MS
     networks:
       app_network:
         ipv4_address: $FACTURACION_MICROSERVICE_HOST
@@ -113,13 +127,11 @@ services:
     restart: unless-stopped
 
   # Farmacia Service
-  farmacia-service:
+  HSM-BE-FARMACIA-MS:
     build:
       context: ../HSM-BE-FARMACIA-MS
       dockerfile: Dockerfile
-    container_name: farmacia-service
-    ports:
-      - $FARMACIA_MICROSERVICE_PORT:$FARMACIA_MICROSERVICE_PORT
+    container_name: HSM-BE-FARMACIA-MS
     networks:
       app_network:
         ipv4_address: $FARMACIA_MICROSERVICE_HOST
@@ -135,13 +147,11 @@ services:
     restart: unless-stopped
 
   # Hospitalizacion Service
-  hospitalizacion-service:
+  HSM-BE-HOSPITALIZACION-MS:
     build:
       context: ../HSM-BE-HOSPITALIZACION-MS
       dockerfile: Dockerfile
-    container_name: hospitalizacion-service
-    ports:
-      - $HOSPITALIZACION_MICROSERVICE_PORT:$HOSPITALIZACION_MICROSERVICE_PORT
+    container_name: HSM-BE-HOSPITALIZACION-MS
     networks:
       app_network:
         ipv4_address: $HOSPITALIZACION_MICROSERVICE_HOST
@@ -162,8 +172,6 @@ services:
       context: ../HSM-BE-MEDICOS-MS
       dockerfile: Dockerfile
     container_name: medicos-service
-    ports:
-      - $MEDICOS_MICROSERVICE_PORT:$MEDICOS_MICROSERVICE_PORT
     networks:
       app_network:
         ipv4_address: $MEDICOS_MICROSERVICE_HOST
@@ -179,13 +187,11 @@ services:
     restart: unless-stopped
 
   #Pacientes service
-  pacientes-service:
+  HSM-BE-PACIENTES-MS:
     build:
       context: ../HSM-BE-PACIENTES-MS
       dockerfile: Dockerfile
-    container_name: pacientes-service
-    ports:
-      - $PACIENTES_MICROSERVICE_PORT:$PACIENTES_MICROSERVICE_PORT
+    container_name: HSM-BE-PACIENTES-MS
     networks:
       app_network:
         ipv4_address: $PACIENTES_MICROSERVICE_HOST
@@ -201,13 +207,11 @@ services:
     restart: unless-stopped
 
   # Personal Service
-  personal-service:
+  HSM-BE-PERSONAL-MS:
     build:
       context: ../HSM-BE-PERSONAL-MS
       dockerfile: Dockerfile
-    container_name: personal-service
-    ports:
-      - $PERSONAL_MICROSERVICE_PORT:$PERSONAL_MICROSERVICE_PORT
+    container_name: HSM-BE-PERSONAL-MS
     networks:
       app_network:
         ipv4_address: $PERSONAL_MICROSERVICE_HOST
@@ -223,13 +227,11 @@ services:
     restart: unless-stopped
 
   # Users Service
-  users-service:
+  HSM-BE-USERS-MS:
     build:
       context: ../HSM-BE-USERS-MS
       dockerfile: Dockerfile
-    container_name: users-service
-    ports:
-      - $USERS_MICROSERVICE_PORT:$USERS_MICROSERVICE_PORT
+    container_name: HSM-BE-USERS-MS
     networks:
       app_network:
         ipv4_address: $USERS_MICROSERVICE_HOST

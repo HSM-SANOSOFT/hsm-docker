@@ -16,56 +16,56 @@
 4. docker-compose --env-file ./envs/global.env up -d --no-build
 
 # Gateway Service
-1. docker-compose logs -f gateway-service
-1. docker-compose --env-file ./envs/global.env build gateway-service
-1. docker-compose --env-file ./envs/global.env up -d gateway-service
+1. docker-compose logs -f HSM-BE-GATEWAY-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-GATEWAY-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS
 
 # Auth Service
-1. docker-compose logs -f auth-service
-1. docker-compose --env-file ./envs/global.env build auth-service
-1. docker-compose --env-file ./envs/global.env up -d auth-service
+1. docker-compose logs -f HSM-BE-AUTH-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-AUTH-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-AUTH-MS
 
 # Coms Service
-1. docker-compose logs -f coms-service
-1. docker-compose --env-file ./envs/global.env build  coms-service
-1. docker-compose --env-file ./envs/global.env up -d coms-service
+1. docker-compose logs -f HSM-BE-COMS-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-COMS-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS
 
 # Examenes Service
-1. docker-compose logs -f examenes-service
-1. docker-compose --env-file ./envs/global.env build examenes-service
-1. docker-compose --env-file ./envs/global.env up -d examenes-service
+1. docker-compose logs -f HSM-BE-EXAMENES-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-EXAMENES-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-EXAMENES-MS
 
 # Facturacion Service
-1. docker-compose logs -f facturacion-service
-1. docker-compose --env-file ./envs/global.env build facturacion-service
-1. docker-compose --env-file ./envs/global.env up -d facturacion-service
+1. docker-compose logs -f HSM-BE-FACTURACION-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-FACTURACION-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-FACTURACION-MS
 
 # Farmacia Service
-1. docker-compose logs -f farmacia-service
-1. docker-compose --env-file ./envs/global.env build farmacia-service
-1. docker-compose --env-file ./envs/global.env up -d farmacia-service
+1. docker-compose logs -f HSM-BE-FARMACIA-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-FARMACIA-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-FARMACIA-MS
 
 # Hospitalizacion Service
-1. docker-compose logs -f hospitalizacion-service
-1. docker-compose --env-file ./envs/global.env build hospitalizacion-service
-1. docker-compose --env-file ./envs/global.env up -d hospitalizacion-service
+1. docker-compose logs -f HSM-BE-HOSPITALIZACION-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-HOSPITALIZACION-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-HOSPITALIZACION-MS
 
 # Medicos Service
-1. docker-compose logs -f medicos-service
-1. docker-compose --env-file ./envs/global.env build medicos-service
-1. docker-compose --env-file ./envs/global.env up -d medicos-service
+1. docker-compose logs -f HSM-BE-MEDICOS-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-MEDICOS-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-MEDICOS-MS
 
 # Pacientes Service
-1. docker-compose logs -f pacientes-service
-1. docker-compose --env-file ./envs/global.env build pacientes-service
-1. docker-compose --env-file ./envs/global.env up -d pacientes-service
+1. docker-compose logs -f HSM-BE-PACIENTES-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-PACIENTES-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-PACIENTES-MS
 
 # Personal Service
-1. docker-compose logs -f personal-service
-1. docker-compose --env-file ./envs/global.env build personal-service
-1. docker-compose --env-file ./envs/global.env up -d personal-service
+1. docker-compose logs -f HSM-BE-PERSONAL-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-PERSONAL-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS
 
 # Users Service
-1. docker-compose logs -f users-service
-1. docker-compose --env-file ./envs/global.env build users-service
-1. docker-compose --env-file ./envs/global.env up -d users-service
+1. docker-compose logs -f HSM-BE-USERS-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-USERS-MS
+1. docker-compose --env-file ./envs/global.env up -d HSM-BE-USERS-MS
