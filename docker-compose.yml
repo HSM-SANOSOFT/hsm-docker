@@ -175,12 +175,12 @@ services:
     restart: unless-stopped
 
   # Medicos Service
-  medicos-service:
-    image: medicos-service
+  HSM-BE-MEDICOS-MS:
+    image: hsm-be-medicos-ms:latest
     build:
       context: ../HSM-BE-MEDICOS-MS
       dockerfile: Dockerfile
-    container_name: medicos-service
+    container_name: HSM-BE-MEDICOS-MS
     networks:
       app_network:
         ipv4_address: $MEDICOS_MICROSERVICE_HOST
