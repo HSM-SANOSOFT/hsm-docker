@@ -4,6 +4,7 @@ services:
 
   #Gateway service
   HSM-BE-GATEWAY-MS:
+    image: hsm-be-gateway-ms
     build:
       context: ../HSM-BE-GATEWAY-MS
       dockerfile: Dockerfile
@@ -26,6 +27,7 @@ services:
 
   #Auth service
   HSM-BE-AUTH-MS:
+    image: hsm-be-auth-ms
     build:
       context: ../HSM-BE-AUTH-MS
       dockerfile: Dockerfile
@@ -48,6 +50,7 @@ services:
 
   #Coms service
   HSM-BE-COMS-MS:
+    image: hsm-be-coms-ms
     build:
       context: ../HSM-BE-COMS-MS
       dockerfile: Dockerfile
@@ -68,6 +71,7 @@ services:
 
   #Coms service
   HSM-BE-COMMON-MS:
+    image: hsm-be-common-ms
     build:
       context: ../HSM-BE-COMMON-MS
       dockerfile: Dockerfile
@@ -88,6 +92,7 @@ services:
 
   #Examenes service
   HSM-BE-EXAMENES-MS:
+    image: hsm-be-examenes-ms
     build:
       context: ../HSM-BE-EXAMENES-MS
       dockerfile: Dockerfile
@@ -108,6 +113,7 @@ services:
 
   #Facturacion service
   HSM-BE-FACTURACION-MS:
+    image: hsm-be-facturacion-ms
     build:
       context: ../HSM-BE-FACTURACION-MS
       dockerfile: Dockerfile
@@ -128,6 +134,7 @@ services:
 
   # Farmacia Service
   HSM-BE-FARMACIA-MS:
+    image: hsm-be-farmacia-ms
     build:
       context: ../HSM-BE-FARMACIA-MS
       dockerfile: Dockerfile
@@ -148,6 +155,7 @@ services:
 
   # Hospitalizacion Service
   HSM-BE-HOSPITALIZACION-MS:
+    image: hsm-be-hospitalizacion-ms
     build:
       context: ../HSM-BE-HOSPITALIZACION-MS
       dockerfile: Dockerfile
@@ -168,6 +176,7 @@ services:
 
   # Medicos Service
   medicos-service:
+    image: medicos-service
     build:
       context: ../HSM-BE-MEDICOS-MS
       dockerfile: Dockerfile
@@ -188,6 +197,7 @@ services:
 
   #Pacientes service
   HSM-BE-PACIENTES-MS:
+    image: hsm-be-pacientes-ms
     build:
       context: ../HSM-BE-PACIENTES-MS
       dockerfile: Dockerfile
@@ -208,6 +218,7 @@ services:
 
   # Personal Service
   HSM-BE-PERSONAL-MS:
+    image: hsm-be-personal-ms
     build:
       context: ../HSM-BE-PERSONAL-MS
       dockerfile: Dockerfile
@@ -228,6 +239,7 @@ services:
 
   # Users Service
   HSM-BE-USERS-MS:
+    image: hsm-be-users-ms
     build:
       context: ../HSM-BE-USERS-MS
       dockerfile: Dockerfile
