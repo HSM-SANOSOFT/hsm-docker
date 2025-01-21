@@ -4,9 +4,7 @@ services:
 
   #Gateway service
   HSM-BE-GATEWAY-MS:
-    build:
-      context: ../HSM-BE-GATEWAY-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-gateway-ms:latest
     container_name: HSM-BE-GATEWAY-MS
     ports:
       - $GATEWAY_MICROSERVICE_PORT:$GATEWAY_MICROSERVICE_PORT
@@ -40,9 +38,7 @@ services:
 
   #Coms service
   HSM-BE-COMS-MS:
-    build:
-      context: ../HSM-BE-COMS-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-coms-ms:latest
     container_name: HSM-BE-COMS-MS
     networks:
       app_network:
@@ -57,9 +53,7 @@ services:
 
   #Examenes service
   HSM-BE-EXAMENES-MS:
-    build:
-      context: ../HSM-BE-EXAMENES-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-examenes-ms:latest
     container_name: HSM-BE-EXAMENES-MS
     networks:
       app_network:
@@ -74,9 +68,7 @@ services:
 
   #Facturacion service
   HSM-BE-FACTURACION-MS:
-    build:
-      context: ../HSM-BE-FACTURACION-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-facturacion-ms:latest
     container_name: HSM-BE-FACTURACION-MS
     networks:
       app_network:
@@ -91,9 +83,7 @@ services:
 
   # Farmacia Service
   HSM-BE-FARMACIA-MS:
-    build:
-      context: ../HSM-BE-FARMACIA-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-farmacia-ms:latest
     container_name: HSM-BE-FARMACIA-MS
     networks:
       app_network:
@@ -108,9 +98,7 @@ services:
 
   # Hospitalizacion Service
   HSM-BE-HOSPITALIZACION-MS:
-    build:
-      context: ../HSM-BE-HOSPITALIZACION-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-hospitalizacion-ms:latest
     container_name: HSM-BE-HOSPITALIZACION-MS
     networks:
       app_network:
@@ -125,9 +113,7 @@ services:
 
   # Medicos Service
   HSM-BE-MEDICOS-MS:
-    build:
-      context: ../HSM-BE-MEDICOS-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-medicos-ms:latest
     container_name: HSM-BE-MEDICOS-MS
     networks:
       app_network:
@@ -142,9 +128,7 @@ services:
 
   #Pacientes service
   HSM-BE-PACIENTES-MS:
-    build:
-      context: ../HSM-BE-PACIENTES-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-pacientes-ms:latest
     container_name: HSM-BE-PACIENTES-MS
     networks:
       app_network:
@@ -159,9 +143,7 @@ services:
 
   # Personal Service
   HSM-BE-PERSONAL-MS:
-    build:
-      context: ../HSM-BE-PERSONAL-MS
-      dockerfile: Dockerfile
+    image: ghcr.io/hsm-sanosoft/hsm-be-personal-ms:latest
     container_name: HSM-BE-PERSONAL-MS
     networks:
       app_network:
