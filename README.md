@@ -28,7 +28,12 @@
 # Coms Service
 1. docker-compose logs -f HSM-BE-COMS-MS
 1. docker-compose --env-file ./envs/global.env build HSM-BE-COMS-MS
-1. docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS
+2. docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS
+
+# Common Service
+1. docker-compose logs -f HSM-BE-COMMON-MS
+1. docker-compose --env-file ./envs/global.env build HSM-BE-COMMON-MS
+2. docker-compose --env-file ./envs/global.env up -d HSM-BE-COMMON-MS
 
 # Examenes Service
 1. docker-compose logs -f HSM-BE-EXAMENES-MS
