@@ -30,7 +30,7 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS --no-build`
-5. Server
+5. Server 
    - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-GATEWAY-MS`
 
 ### Auth Service
