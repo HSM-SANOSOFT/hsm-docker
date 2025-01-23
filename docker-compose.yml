@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-AUTH-MS
     ports:
-      - $AUTH_MICROSERVICE_PORT:$AUTH_MICROSERVICE_PORT
+      - $AUTH_WEBSOCKET_MICROSERVICE_PORT:$AUTH_WEBSOCKET_MICROSERVICE_PORT
     networks:
       app_network:
         ipv4_address: $AUTH_MICROSERVICE_HOST
