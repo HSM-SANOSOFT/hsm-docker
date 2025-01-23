@@ -30,6 +30,8 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS --no-build`
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-GATEWAY-MS`
 
 ### Auth Service
 1. View logs:
@@ -40,7 +42,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-AUTH-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-AUTH-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-AUTH-MS`
+  
 ### Coms Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-COMS-MS`
@@ -50,7 +54,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-COMS-MS`
+  
 ### Common Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-COMMON-MS`
@@ -60,7 +66,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMMON-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMMON-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-COMMON-MS`
+  
 ### Examenes Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-EXAMENES-MS`
@@ -70,7 +78,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-EXAMENES-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-EXAMENES-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-EXAMENES-MS`
+  
 ### Facturacion Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-FACTURACION-MS`
@@ -80,7 +90,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FACTURACION-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FACTURACION-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-FACTURACION-MS`
+  
 ### Farmacia Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-FARMACIA-MS`
@@ -90,7 +102,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FARMACIA-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FARMACIA-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-FARMACIA-MS`
+  
 ### Hospitalizacion Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-HOSPITALIZACION-MS`
@@ -100,7 +114,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-HOSPITALIZACION-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-HOSPITALIZACION-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-HOSPITALIZACION-MS`
+  
 ### Medicos Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-MEDICOS-MS`
@@ -110,7 +126,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-MEDICOS-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-MEDICOS-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-MEDICOS-MS`
+  
 ### Pacientes Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-PACIENTES-MS`
@@ -120,7 +138,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PACIENTES-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PACIENTES-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-PACIENTES-MS`
+  
 ### Personal Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-PERSONAL-MS`
@@ -130,7 +150,9 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS --no-build`
-
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-PERSONAL-MS`
+  
 ### Users Service
 1. View logs:
    - `docker-compose logs -f HSM-BE-USERS-MS`
@@ -140,3 +162,6 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-USERS-MS`
 4. Start (no build):
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-USERS-MS --no-build`
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-USERS-MS`
+  
