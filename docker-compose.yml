@@ -237,6 +237,27 @@ services:
       - /app/node_modules
     restart: unless-stopped
 
+    # Personal Service
+  HSM-BE-POSTULANTES-MS:
+    image: hsm-be-postulantes-ms:latest
+    build:
+      context: ../HSM-BE-POSTULANTES-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-POSTULANTES-MS
+    networks:
+      app_network:
+        ipv4_address: $POSTULANTES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/postulantes.env
+    environment:
+      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
+      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    volumes:
+      - ../HSM-BE-POSTULANTES-MS:/app
+      - /app/node_modules
+    restart: unless-stopped
+
   # Users Service
   HSM-BE-USERS-MS:
     image: hsm-be-users-ms:latest
