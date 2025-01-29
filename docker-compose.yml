@@ -271,9 +271,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/users.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     volumes:
       - ../HSM-BE-USERS-MS:/app
       - /app/node_modules
