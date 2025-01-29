@@ -1,5 +1,9 @@
 name: HSM-BACKEND
 
+configs:
+  global_env:
+    file: ./envs/global.env
+
 services:
 
   #Gateway service

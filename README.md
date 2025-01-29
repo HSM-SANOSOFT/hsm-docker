@@ -3,177 +3,61 @@
 ## General Commands
 
 ### Docker Cleanup
-1. `docker-compose down`
-2. `docker system prune`
-3. `docker volumes prune`
-4. `docker image prune`
-5. `docker network prune`
-6. `docker container prune`
-7. `docker builder prune`
+To free up space and remove unused Docker objects, run the following commands:
+1. `docker-compose down` – Stops and removes containers defined in the `docker-compose.yml` file.
+2. `docker system prune` – Removes unused images, containers, networks, and build cache.
+3. `docker volumes prune` – Deletes all unused Docker volumes.
+4. `docker image prune` – Removes dangling (unused) images.
+5. `docker network prune` – Deletes unused Docker networks.
+6. `docker container prune` – Removes stopped containers.
+7. `docker builder prune` – Clears unused build cache.
 
-### Docker Compose
-1. `docker-compose --env-file ./envs/global.env up --build`
-2. `docker-compose --env-file ./envs/global.env build`
-3. `docker-compose --env-file ./envs/global.env up -d`
-4. `docker-compose --env-file ./envs/global.env up -d --no-build`
+## Docker Compose
+
+Docker Compose simplifies multi-container applications by defining services, networks, and volumes in a YAML file. Below are the most commonly used commands:
+
+### Starting and Stopping Containers
+- `docker-compose up --build` – Builds images before starting the containers.
+- `docker-compose build` – Builds images without starting containers.
+- `docker-compose up -d` – Starts containers in detached mode (background execution).
+- `docker-compose up -d --no-build` – Starts containers without rebuilding images.
+- `docker-compose stop` – Stops running containers without removing them.
+- `docker-compose down` – Stops and removes all containers, networks, and volumes.
+
+### Viewing and Managing Containers
+- `docker-compose ps` – Lists all running containers in the Compose project.
+- `docker-compose logs -f [SERVICE_NAME]` – Follows real-time logs of a service.
+- `docker-compose exec [SERVICE_NAME] bash` – Opens a shell inside a running container.
+- `docker-compose restart [SERVICE_NAME]` – Restarts a specific service.
+- `docker-compose restart` – Restarts all services in the Compose file.
+
+### Scaling Services
+- `docker-compose up --scale [SERVICE_NAME]=3 -d` – Runs multiple instances of a service.
+
+### Environment and Configuration
+- `.env` file support – Docker Compose automatically reads environment variables from a `.env` file in the same directory.
+- `docker-compose config` – Validates and displays the resolved `docker-compose.yml` file.
+
+### Networking
+- `docker network ls` – Lists all Docker networks.
+- `docker network inspect [NETWORK_NAME]` – Displays details about a specific network.
+- `docker-compose run --service-ports [SERVICE_NAME]` – Runs a service while exposing its ports.
+
+### Volume Management
+- `docker volume ls` – Lists all Docker volumes.
+- `docker volume inspect [VOLUME_NAME]` – Shows details of a specific volume.
 
 ---
 
-## Microservices
+## Microservices Management
 
-### Gateway Service
-1. View logs: 
-   - `docker-compose logs -f HSM-BE-GATEWAY-MS`
-2. Build: 
-   -`docker-compose --env-file ./envs/global.env build HSM-BE-GATEWAY-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-GATEWAY-MS --no-build`
-5. Server 
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-GATEWAY-MS`
+Each microservice follows the same set of commands:
 
-### Auth Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-AUTH-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-AUTH-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-AUTH-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-AUTH-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-AUTH-MS`
-  
-### Coms Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-COMS-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-COMS-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMS-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-COMS-MS`
-  
-### Common Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-COMMON-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-COMMON-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMMON-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-COMMON-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-COMMON-MS`
-  
-### Examenes Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-EXAMENES-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-EXAMENES-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-EXAMENES-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-EXAMENES-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-EXAMENES-MS`
-  
-### Facturacion Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-FACTURACION-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-FACTURACION-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FACTURACION-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FACTURACION-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-FACTURACION-MS`
-  
-### Farmacia Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-FARMACIA-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-FARMACIA-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FARMACIA-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-FARMACIA-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-FARMACIA-MS`
-  
-### Hospitalizacion Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-HOSPITALIZACION-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-HOSPITALIZACION-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-HOSPITALIZACION-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-HOSPITALIZACION-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-HOSPITALIZACION-MS`
-  
-### Medicos Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-MEDICOS-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-MEDICOS-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-MEDICOS-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-MEDICOS-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-MEDICOS-MS`
-  
-### Pacientes Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-PACIENTES-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-PACIENTES-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PACIENTES-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PACIENTES-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-PACIENTES-MS`
-  
-### Personal Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-PERSONAL-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-PERSONAL-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-PERSONAL-MS`
+### Template for Microservice Commands
+Replace `[SERVICE_NAME]` with the actual service name:
 
-   ### Postulante Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-POSTULANTES-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-POSTULANTES-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-POSTULANTES-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-POSTULANTES-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-POSTULANTES-MS`
-  
-### Users Service
-1. View logs:
-   - `docker-compose logs -f HSM-BE-USERS-MS`
-2. Build:
-   - `docker-compose --env-file ./envs/global.env build HSM-BE-USERS-MS`
-3. Start (build included):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-USERS-MS`
-4. Start (no build):
-   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-USERS-MS --no-build`
-5. Server
-   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-USERS-MS`
-  
+1. **View logs:** `docker-compose logs -f [SERVICE_NAME]`
+2. **Build:** `docker-compose build [SERVICE_NAME]`
+3. **Start (with build):** `docker-compose up -d [SERVICE_NAME]`
+4. **Start (without build):** `docker-compose up -d [SERVICE_NAME] --no-build`
+5. **Deploy (production):** `docker-compose -f docker-compose.prod.yml up -d --no-deps [SERVICE_NAME]`

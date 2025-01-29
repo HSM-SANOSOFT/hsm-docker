@@ -1,7 +1,8 @@
 name: HSM-BACKEND
 
-env_file:
-  - ./envs/global.env
+configs:
+  global_env:
+    file: ./envs/global.env
 
 services:
 
