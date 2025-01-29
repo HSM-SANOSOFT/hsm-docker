@@ -152,6 +152,18 @@
    - `docker-compose --env-file ./envs/global.env up -d HSM-BE-PERSONAL-MS --no-build`
 5. Server
    - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-PERSONAL-MS`
+
+   ### Postulante Service
+1. View logs:
+   - `docker-compose logs -f HSM-BE-POSTULANTES-MS`
+2. Build:
+   - `docker-compose --env-file ./envs/global.env build HSM-BE-POSTULANTES-MS`
+3. Start (build included):
+   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-POSTULANTES-MS`
+4. Start (no build):
+   - `docker-compose --env-file ./envs/global.env up -d HSM-BE-POSTULANTES-MS --no-build`
+5. Server
+   - `docker-compose -f docker-compose.prod.yml --env-file ./envs/global.env up -d --no-deps HSM-BE-POSTULANTES-MS`
   
 ### Users Service
 1. View logs:
