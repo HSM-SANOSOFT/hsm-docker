@@ -1,5 +1,8 @@
 name: HSM-BACKEND
 
+env_file:
+  - ./envs/global.env
+
 services:
 
   #Gateway service
@@ -14,9 +17,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/gateway.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #Auth service
@@ -31,9 +31,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/auth.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #Coms service
@@ -46,9 +43,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/coms.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #COMMON service
@@ -61,9 +55,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/common.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #Examenes service
@@ -76,9 +67,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/examenes.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #Facturacion service
@@ -91,9 +79,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/facturacion.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   # Farmacia Service
@@ -106,9 +91,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/farmacia.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   # Hospitalizacion Service
@@ -121,9 +103,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/hospitalizacion.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   # Medicos Service
@@ -136,9 +115,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/medicos.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   #Pacientes service
@@ -151,9 +127,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/pacientes.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
   # Personal Service
@@ -166,9 +139,17 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/personal.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+    # Postulantes Service
+  HSM-BE-POSTULANTES-MS:
+    image: ghcr.io/hsm-sanosoft/hsm-be-postulantes-ms:latest
+    container_name: HSM-BE-POSTULANTES-MS
+    networks:
+      app_network:
+        ipv4_address: $POSTULANTES_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/postulantes.env
     restart: unless-stopped
 
   # Users Service
@@ -181,9 +162,6 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/users.env
-    environment:
-      - ORACLE_CLIENT_PATH=/usr/lib/oracle/12.1/client64/lib
-      - LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
 
 networks:
