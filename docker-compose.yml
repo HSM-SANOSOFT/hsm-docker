@@ -17,10 +17,10 @@ services:
       - ./envs/global.env
       - ./envs/gateway.env
     ports:
-      - $GATEWAY_MICROSERVICE_PORT:$GATEWAY_MICROSERVICE_PORT
+      - ${GATEWAY_MICROSERVICE_PORT}:${GATEWAY_MICROSERVICE_PORT}
     networks:
       app_network:
-        ipv4_address: $GATEWAY_MICROSERVICE_HOST
+        ipv4_address: ${GATEWAY_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-GATEWAY-MS:/app
       - /app/node_modules
@@ -37,10 +37,10 @@ services:
       - ./envs/global.env
       - ./envs/auth.env
     ports:
-      - $AUTH_WEBSOCKET_MICROSERVICE_PORT:$AUTH_WEBSOCKET_MICROSERVICE_PORT
+      - ${AUTH_WEBSOCKET_MICROSERVICE_PORT}:${AUTH_WEBSOCKET_MICROSERVICE_PORT}
     networks:
       app_network:
-        ipv4_address: $AUTH_MICROSERVICE_HOST
+        ipv4_address: ${AUTH_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-AUTH-MS:/app
       - /app/node_modules
@@ -58,7 +58,7 @@ services:
       - ./envs/coms.env
     networks:
       app_network:
-        ipv4_address: $COMS_MICROSERVICE_HOST
+        ipv4_address: ${COMS_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-COMS-MS:/app
       - /app/node_modules
@@ -76,7 +76,7 @@ services:
       - ./envs/common.env
     networks:
       app_network:
-        ipv4_address: $COMMON_MICROSERVICE_HOST
+        ipv4_address: ${COMMON_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-COMMON-MS:/app
       - /app/node_modules
@@ -94,7 +94,7 @@ services:
       - ./envs/examenes.env
     networks:
       app_network:
-        ipv4_address: $EXAMENES_MICROSERVICE_HOST
+        ipv4_address: ${EXAMENES_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-EXAMENES-MS:/app
       - /app/node_modules
@@ -112,7 +112,7 @@ services:
       - ./envs/facturacion.env
     networks:
       app_network:
-        ipv4_address: $FACTURACION_MICROSERVICE_HOST
+        ipv4_address: ${FACTURACION_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-FACTURACION-MS:/app
       - /app/node_modules
@@ -130,7 +130,7 @@ services:
       - ./envs/farmacia.env
     networks:
       app_network:
-        ipv4_address: $FARMACIA_MICROSERVICE_HOST
+        ipv4_address: ${FARMACIA_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-FARMACIA-MS:/app
       - /app/node_modules
@@ -148,7 +148,7 @@ services:
       - ./envs/hospitalizacion.env
     networks:
       app_network:
-        ipv4_address: $HOSPITALIZACION_MICROSERVICE_HOST
+        ipv4_address: ${HOSPITALIZACION_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-HOSPITALIZACION-MS:/app
       - /app/node_modules
@@ -166,7 +166,7 @@ services:
       - ./envs/medicos.env
     networks:
       app_network:
-        ipv4_address: $MEDICOS_MICROSERVICE_HOST
+        ipv4_address: ${MEDICOS_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-MEDICOS-MS:/app
       - /app/node_modules
@@ -184,7 +184,7 @@ services:
       - ./envs/pacientes.env
     networks:
       app_network:
-        ipv4_address: $PACIENTES_MICROSERVICE_HOST
+        ipv4_address: ${PACIENTES_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-PACIENTES-MS:/app
       - /app/node_modules
@@ -202,7 +202,7 @@ services:
       - ./envs/personal.env
     networks:
       app_network:
-        ipv4_address: $PERSONAL_MICROSERVICE_HOST
+        ipv4_address: ${PERSONAL_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-PERSONAL-MS:/app
       - /app/node_modules
@@ -220,7 +220,7 @@ services:
       - ./envs/postulantes.env
     networks:
       app_network:
-        ipv4_address: $POSTULANTES_MICROSERVICE_HOST
+        ipv4_address: ${POSTULANTES_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-POSTULANTES-MS:/app
       - /app/node_modules
@@ -235,10 +235,10 @@ services:
     container_name: HSM-BE-TRABAJO-MS
     env_file:
       - ./envs/global.env
-      - ./envs/trabajo.env
+      - ./envs/trabajos.env
     networks:
       app_network:
-        ipv4_address: $TRABAJO_MICROSERVICE_HOST
+        ipv4_address: ${TRABAJO_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-TRABAJO-MS:/app
       - /app/node_modules
@@ -256,7 +256,7 @@ services:
       - ./envs/users.env
     networks:
       app_network:
-        ipv4_address: $USERS_MICROSERVICE_HOST
+        ipv4_address: ${USERS_MICROSERVICE_HOST}
     volumes:
       - ../HSM-BE-USERS-MS:/app
       - /app/node_modules
@@ -267,4 +267,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: $DOCKER_SUBNET
+        - subnet: ${DOCKER_SUBNET}
