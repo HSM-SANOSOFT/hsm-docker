@@ -208,7 +208,7 @@ services:
       - /app/node_modules
     restart: unless-stopped
 
-    # Postulante Service
+  # Postulante Service
   HSM-BE-POSTULANTES-MS:
     image: hsm-be-postulantes-ms:latest
     build:
@@ -223,6 +223,24 @@ services:
         ipv4_address: $POSTULANTES_MICROSERVICE_HOST
     volumes:
       - ../HSM-BE-POSTULANTES-MS:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Trabajo Service
+  HSM-BE-TRABAJO-MS:
+    image: hsm-be-trabajo-ms:latest
+    build:
+      context: ../HSM-BE-TRABAJO-MS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-TRABAJO-MS
+    env_file:
+      - ./envs/global.env
+      - ./envs/trabajo.env
+    networks:
+      app_network:
+        ipv4_address: $TRABAJO_MICROSERVICE_HOST
+    volumes:
+      - ../HSM-BE-TRABAJO-MS:/app
       - /app/node_modules
     restart: unless-stopped
 

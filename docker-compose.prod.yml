@@ -141,7 +141,8 @@ services:
       - ./envs/global.env
       - ./envs/personal.env
     restart: unless-stopped
-    # Postulantes Service
+
+  # Postulantes Service
   HSM-BE-POSTULANTES-MS:
     image: ghcr.io/hsm-sanosoft/hsm-be-postulantes-ms:latest
     container_name: HSM-BE-POSTULANTES-MS
@@ -151,6 +152,18 @@ services:
     env_file:
       - ./envs/global.env
       - ./envs/postulantes.env
+    restart: unless-stopped
+
+  # Trabajo Service
+  HSM-BE-TRABAJO-MS:
+    image: ghcr.io/hsm-sanosoft/hsm-be-trabajo-ms:latest
+    container_name: HSM-BE-TRABAJO-MS
+    networks:
+      app_network:
+        ipv4_address: $TRABAJO_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/trabajo.env
     restart: unless-stopped
 
   # Users Service
