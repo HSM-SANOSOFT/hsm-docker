@@ -10,131 +10,137 @@ networks:
 services:
 
   # Gateway Service
-  HSM-CORE-GATEWAY:
-    image: hsm-core-gateway:latest
+  HSM-BE-CORE-GATEWAY:
+    image: hsm-be-core-gateway:latest
     build:
-      context: ../HSM-CORE-GATEWAY
+      context: ../HSM-BE-CORE-GATEWAY
       dockerfile: Dockerfile
-    container_name: HSM-CORE-GATEWAY
+    container_name: HSM-BE-CORE-GATEWAY
     env_file:
       - ./.env
-      - ./envs/hsm-core-gateway.env
+      - ./envs/hsm-be-core-gateway.env
     ports:
-      - ${HSM_CORE_GATEWAY_PORT}:${HSM_CORE_GATEWAY_PORT}
+      - ${HSM_BE_CORE_GATEWAY_PORT}:${HSM_BE_CORE_GATEWAY_PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_CORE_GATEWAY_HOST
+        ipv4_address: $HSM_BE_CORE_GATEWAY_HOST
     volumes:
-      - ../HSM-CORE-GATEWAY:/app
+      - ../HSM-BE-CORE-GATEWAY:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Auth Service
-  HSM-CORE-AUTH:
-    image: hsm-core-auth:latest
+  HSM-BE-CORE-AUTH:
+    image: hsm-be-core-auth:latest
     build:
-      context: ../HSM-CORE-AUTH
+      context: ../HSM-BE-CORE-AUTH
       dockerfile: Dockerfile
-    container_name: HSM-CORE-AUTH
+    container_name: HSM-BE-CORE-AUTH
     env_file:
       - ./.env
-      - ./envs/hsm-core-auth.env
+      - ./envs/hsm-be-core-auth.env
     ports:
-      - ${HSM_CORE_AUTH_WS_PORT}:${HSM_CORE_AUTH_WS_PORT}
+      - ${HSM_BE_CORE_AUTH_WS_PORT}:${HSM_BE_CORE_AUTH_WS_PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_CORE_AUTH_HOST
+        ipv4_address: $HSM_BE_CORE_AUTH_HOST
     volumes:
-      - ../HSM-CORE-AUTH:/app
+      - ../HSM-BE-CORE-AUTH:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Communications Service
-  HSM-CORE-COMS:
-    image: hsm-core-coms:latest
+  HSM-BE-CORE-COMS:
+    image: hsm-be-core-coms:latest
     build:
-      context: ../HSM-CORE-COMS
+      context: ../HSM-BE-CORE-COMS
       dockerfile: Dockerfile
-    container_name: HSM-CORE-COMS
+    container_name: HSM-BE-CORE-COMS
     env_file:
       - ./.env
-      - ./envs/hsm-core-coms.env
+      - ./envs/hsm-be-core-coms.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_CORE_COMS_HOST
+        ipv4_address: $HSM_BE_CORE_COMS_HOST
     volumes:
-      - ../HSM-CORE-COMS:/app
+      - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Common Service
-  HSM-CORE-COMMON:
-    image: hsm-core-common:latest
+  HSM-BE-CORE-COMMON:
+    image: hsm-be-core-common:latest
     build:
-      context: ../HSM-CORE-COMMON
+      context: ../HSM-BE-CORE-COMMON
       dockerfile: Dockerfile
-    container_name: HSM-CORE-COMMON
+    container_name: HSM-BE-CORE-COMMON
     env_file:
       - ./.env
-      - ./envs/hsm-core-common.env
+      - ./envs/hsm-be-core-common.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_CORE_COMMON_HOST
+        ipv4_address: $HSM_BE_CORE_COMMON_HOST
     volumes:
-      - ../HSM-CORE-COMMON:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Postulantes Service
-  HSM-HAS-GAA-GTH-GSR-POSTULANTES:
-    image: hsm-has-gaa-gth-gsr-postulantes:latest
-    build:
-      context: ../HSM-HAS-GAA-GTH-GSR-POSTULANTES
-      dockerfile: Dockerfile
-    container_name: HSM-HAS-GAA-GTH-GSR-POSTULANTES
-    env_file:
-      - ./.env
-      - ./envs/hsm-has-gaa-gth-gsr-postulantes.env
-    networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_HAS_GAA_GTH_GSR_POSTULANTES_HOST
-    volumes:
-      - ../HSM-HAS-GAA-GTH-GSR-POSTULANTES:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Trabajo Service
-  HSM-HAS-GAA-GTH-GSR-TRABAJOS:
-    image: hsm-has-gaa-gth-gsr-trabajos:latest
-    build:
-      context: ../HSM-HAS-GAA-GTH-GSR-TRABAJOS
-      dockerfile: Dockerfile
-    container_name: HSM-HAS-GAA-GTH-GSR-TRABAJOS
-    env_file:
-      - ./.env
-      - ./envs/hsm-has-gaa-gth-gsr-trabajos.env
-    networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_HAS_GAA_GTH_GSR_TRABAJOS_HOST
-    volumes:
-      - ../HSM-HAS-GAA-GTH-GSR-TRABAJOS:/app
+      - ../HSM-BE-CORE-COMMON:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Users Service
-  HSM-CORE-USERS:
-    image: hsm-core-users:latest
+  HSM-BE-CORE-USERS:
+    image: hsm-be-core-users:latest
     build:
-      context: ../HSM-CORE-USERS
+      context: ../HSM-BE-CORE-USERS
       dockerfile: Dockerfile
-    container_name: HSM-CORE-USERS
+    container_name: HSM-BE-CORE-USERS
     env_file:
       - ./.env
-      - ./envs/hsm-core-users.env
+      - ./envs/hsm-be-core-users.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_CORE_USERS_HOST
+        ipv4_address: $HSM_BE_CORE_USERS_HOST
     volumes:
-      - ../HSM-CORE-USERS:/app
+      - ../HSM-BE-CORE-USERS:/app
       - /app/node_modules
     restart: unless-stopped
+
+  # Postulantes Service
+  HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:
+    image: hsm-be-has-gaa-gth-gsr-postulantes:latest
+    build:
+      context: ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
+      dockerfile: Dockerfile
+    container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
+    ports:
+      - ${HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_PORT}:${HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_PORT}
+    networks:
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_HOST
+    volumes:
+      - ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # Trabajo Service
+  HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:
+    image: hsm-be-has-gaa-gth-gsr-trabajos:latest
+    build:
+      context: ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
+    ports:
+      - ${HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_PORT}:${HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_PORT}
+    networks:
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_HOST
+    volumes:
+      - ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  
