@@ -5,7 +5,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: $DOCKER_SUBNET
+        - subnet: $HSM-DOCKER-SUBNET
 
 services:
 
@@ -20,10 +20,10 @@ services:
       - ./.env
       - ./envs/hsm-core-gateway.env
     ports:
-      - ${GATEWAY_MICROSERVICE_PORT}:${GATEWAY_MICROSERVICE_PORT}
+      - ${HSM-CORE-GATEWAY-PORT}:${HSM-CORE-GATEWAY-PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $GATEWAY_MICROSERVICE_HOST
+        ipv4_address: $HSM-CORE-GATEWAY-HOST
     volumes:
       - ../HSM-CORE-GATEWAY:/app
       - /app/node_modules
@@ -40,10 +40,10 @@ services:
       - ./.env
       - ./envs/hsm-core-auth.env
     ports:
-      - ${AUTH_WEBSOCKET_MICROSERVICE_PORT}:${AUTH_WEBSOCKET_MICROSERVICE_PORT}
+      - ${HSM-CORE-AUTH-WS-PORT}:${HSM-CORE-AUTH-WS-PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $AUTH_MICROSERVICE_HOST
+        ipv4_address: $HSM-CORE-AUTH-HOST
     volumes:
       - ../HSM-CORE-AUTH:/app
       - /app/node_modules
@@ -61,7 +61,7 @@ services:
       - ./envs/hsm-core-coms.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $COMS_MICROSERVICE_HOST
+        ipv4_address: $HSM-CORE-COMS-HOST
     volumes:
       - ../HSM-CORE-COMS:/app
       - /app/node_modules
@@ -79,7 +79,7 @@ services:
       - ./envs/hsm-core-common.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $COMMON_MICROSERVICE_HOST
+        ipv4_address: $HSM-CORE-COMMON-HOST
     volumes:
       - ../HSM-CORE-COMMON:/app
       - /app/node_modules
@@ -97,7 +97,7 @@ services:
       - ./envs/hsm-has-gaa-gth-gsr-postulantes.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $POSTULANTES_MICROSERVICE_HOST
+        ipv4_address: $HSM-HAS-GAA-GTH-GSR-POSTULANTES-HOST
     volumes:
       - ../HSM-HAS-GAA-GTH-GSR-POSTULANTES:/app
       - /app/node_modules
@@ -115,7 +115,7 @@ services:
       - ./envs/hsm-has-gaa-gth-gsr-trabajos.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $TRABAJO_MICROSERVICE_HOST
+        ipv4_address: $HSM-HAS-GAA-GTH-GSR-TRABAJOS-HOST
     volumes:
       - ../HSM-HAS-GAA-GTH-GSR-TRABAJOS:/app
       - /app/node_modules
@@ -133,7 +133,7 @@ services:
       - ./envs/hsm-core-users.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $USERS_MICROSERVICE_HOST
+        ipv4_address: $HSM-CORE-USERS-HOST
     volumes:
       - ../HSM-CORE-USERS:/app
       - /app/node_modules
