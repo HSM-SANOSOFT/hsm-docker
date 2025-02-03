@@ -1,266 +1,140 @@
 name: HSM-BACKEND
 
+networks:
+  HSM-BACKEND-NETWORK:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: $DOCKER_SUBNET
+
 services:
 
-  #Gateway service
-  HSM-BE-GATEWAY-MS:
-    image: hsm-be-gateway-ms:latest
+  # Gateway Service
+  HSM-CORE-GATEWAY-MS:
+    image: hsm-core-gateway-ms:latest
     build:
-      context: ../HSM-BE-GATEWAY-MS
+      context: ../HSM-CORE-GATEWAY-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-GATEWAY-MS
+    container_name: HSM-CORE-GATEWAY-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/gateway.env
+      - ./.env
+      - ./envs/hsm-core-gateway-ms.env
     ports:
       - ${GATEWAY_MICROSERVICE_PORT}:${GATEWAY_MICROSERVICE_PORT}
     networks:
-      app_network:
-        ipv4_address: ${GATEWAY_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $GATEWAY_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-GATEWAY-MS:/app
+      - ../HSM-CORE-GATEWAY-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
-  #Auth service
-  HSM-BE-AUTH-MS:
-    image: hsm-be-auth-ms:latest
+  # Auth Service
+  HSM-CORE-AUTH-MS:
+    image: hsm-core-auth-ms:latest
     build:
-      context: ../HSM-BE-AUTH-MS
+      context: ../HSM-CORE-AUTH-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-AUTH-MS
+    container_name: HSM-CORE-AUTH-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/auth.env
+      - ./.env
+      - ./envs/hsm-core-auth-ms.env
     ports:
       - ${AUTH_WEBSOCKET_MICROSERVICE_PORT}:${AUTH_WEBSOCKET_MICROSERVICE_PORT}
     networks:
-      app_network:
-        ipv4_address: ${AUTH_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $AUTH_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-AUTH-MS:/app
+      - ../HSM-CORE-AUTH-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
-  #Coms service
-  HSM-BE-COMS-MS:
-    image: hsm-be-coms-ms:latest
+  # Communications Service
+  HSM-CORE-COMS-MS:
+    image: hsm-core-coms-ms:latest
     build:
-      context: ../HSM-BE-COMS-MS
+      context: ../HSM-CORE-COMS-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-COMS-MS
+    container_name: HSM-CORE-COMS-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/coms.env
+      - ./.env
+      - ./envs/hsm-core-coms-ms.env
     networks:
-      app_network:
-        ipv4_address: ${COMS_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $COMS_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-COMS-MS:/app
+      - ../HSM-CORE-COMS-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
-  #Coms service
-  HSM-BE-COMMON-MS:
-    image: hsm-be-common-ms:latest
+  # Common Service
+  HSM-CORE-COMMON-MS:
+    image: hsm-core-common-ms:latest
     build:
-      context: ../HSM-BE-COMMON-MS
+      context: ../HSM-CORE-COMMON-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-COMMON-MS
+    container_name: HSM-CORE-COMMON-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/common.env
+      - ./.env
+      - ./envs/hsm-core-common-ms.env
     networks:
-      app_network:
-        ipv4_address: ${COMMON_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $COMMON_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-COMMON-MS:/app
+      - ../HSM-CORE-COMMON-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
-  #Examenes service
-  HSM-BE-EXAMENES-MS:
-    image: hsm-be-examenes-ms:latest
+  # Postulantes Service
+  HSM-HAS-GAA-GTH-GSR-POSTULANTES-MS:
+    image: hsm-has-gaa-gth-gsr-postulantes-ms:latest
     build:
-      context: ../HSM-BE-EXAMENES-MS
+      context: ../HSM-HAS-GAA-GTH-GSR-POSTULANTES-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-EXAMENES-MS
+    container_name: HSM-HAS-GAA-GTH-GSR-POSTULANTES-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/examenes.env
+      - ./.env
+      - ./envs/hsm-has-gaa-gth-gsr-postulantes-ms.env
     networks:
-      app_network:
-        ipv4_address: ${EXAMENES_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $POSTULANTES_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-EXAMENES-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  #Facturacion service
-  HSM-BE-FACTURACION-MS:
-    image: hsm-be-facturacion-ms:latest
-    build:
-      context: ../HSM-BE-FACTURACION-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-FACTURACION-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/facturacion.env
-    networks:
-      app_network:
-        ipv4_address: ${FACTURACION_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-FACTURACION-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Farmacia Service
-  HSM-BE-FARMACIA-MS:
-    image: hsm-be-farmacia-ms:latest
-    build:
-      context: ../HSM-BE-FARMACIA-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-FARMACIA-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/farmacia.env
-    networks:
-      app_network:
-        ipv4_address: ${FARMACIA_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-FARMACIA-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Hospitalizacion Service
-  HSM-BE-HOSPITALIZACION-MS:
-    image: hsm-be-hospitalizacion-ms:latest
-    build:
-      context: ../HSM-BE-HOSPITALIZACION-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-HOSPITALIZACION-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/hospitalizacion.env
-    networks:
-      app_network:
-        ipv4_address: ${HOSPITALIZACION_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-HOSPITALIZACION-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Medicos Service
-  HSM-BE-MEDICOS-MS:
-    image: hsm-be-medicos-ms:latest
-    build:
-      context: ../HSM-BE-MEDICOS-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-MEDICOS-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/medicos.env
-    networks:
-      app_network:
-        ipv4_address: ${MEDICOS_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-MEDICOS-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  #Pacientes service
-  HSM-BE-PACIENTES-MS:
-    image: hsm-be-pacientes-ms:latest
-    build:
-      context: ../HSM-BE-PACIENTES-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-PACIENTES-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/pacientes.env
-    networks:
-      app_network:
-        ipv4_address: ${PACIENTES_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-PACIENTES-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Personal Service
-  HSM-BE-PERSONAL-MS:
-    image: hsm-be-personal-ms:latest
-    build:
-      context: ../HSM-BE-PERSONAL-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-PERSONAL-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/personal.env
-    networks:
-      app_network:
-        ipv4_address: ${PERSONAL_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-PERSONAL-MS:/app
-      - /app/node_modules
-    restart: unless-stopped
-
-  # Postulante Service
-  HSM-BE-POSTULANTES-MS:
-    image: hsm-be-postulantes-ms:latest
-    build:
-      context: ../HSM-BE-POSTULANTES-MS
-      dockerfile: Dockerfile
-    container_name: HSM-BE-POSTULANTES-MS
-    env_file:
-      - ./envs/global.env
-      - ./envs/postulantes.env
-    networks:
-      app_network:
-        ipv4_address: ${POSTULANTES_MICROSERVICE_HOST}
-    volumes:
-      - ../HSM-BE-POSTULANTES-MS:/app
+      - ../HSM-HAS-GAA-GTH-GSR-POSTULANTES-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Trabajo Service
-  HSM-BE-TRABAJO-MS:
-    image: hsm-be-trabajo-ms:latest
+  HSM-HAS-GAA-GTH-GSR-TRABAJOS-MS:
+    image: hsm-has-gaa-gth-gsr-trabajos-ms:latest
     build:
-      context: ../HSM-BE-TRABAJO-MS
+      context: ../HSM-HAS-GAA-GTH-GSR-TRABAJOS-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-TRABAJO-MS
+    container_name: HSM-HAS-GAA-GTH-GSR-TRABAJOS-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/trabajos.env
+      - ./.env
+      - ./envs/hsm-has-gaa-gth-gsr-trabajos-ms.env
     networks:
-      app_network:
-        ipv4_address: ${TRABAJO_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $TRABAJO_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-TRABAJO-MS:/app
+      - ../HSM-HAS-GAA-GTH-GSR-TRABAJOS-MS:/app
       - /app/node_modules
     restart: unless-stopped
 
   # Users Service
-  HSM-BE-USERS-MS:
-    image: hsm-be-users-ms:latest
+  HSM-CORE-USERS-MS:
+    image: hsm-core-users-ms:latest
     build:
-      context: ../HSM-BE-USERS-MS
+      context: ../HSM-CORE-USERS-MS
       dockerfile: Dockerfile
-    container_name: HSM-BE-USERS-MS
+    container_name: HSM-CORE-USERS-MS
     env_file:
-      - ./envs/global.env
-      - ./envs/users.env
+      - ./.env
+      - ./envs/hsm-core-users-ms.env
     networks:
-      app_network:
-        ipv4_address: ${USERS_MICROSERVICE_HOST}
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $USERS_MICROSERVICE_HOST
     volumes:
-      - ../HSM-BE-USERS-MS:/app
+      - ../HSM-CORE-USERS-MS:/app
       - /app/node_modules
     restart: unless-stopped
-
-networks:
-  app_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: ${DOCKER_SUBNET}
