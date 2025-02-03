@@ -5,7 +5,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: $HSM-DOCKER-SUBNET
+        - subnet: $HSM_DOCKER_SUBNET
 
 services:
 
@@ -20,10 +20,10 @@ services:
       - ./.env
       - ./envs/hsm-core-gateway.env
     ports:
-      - ${HSM-CORE-GATEWAY-PORT}:${HSM-CORE-GATEWAY-PORT}
+      - ${HSM_CORE_GATEWAY_PORT}:${HSM_CORE_GATEWAY_PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-CORE-GATEWAY-HOST
+        ipv4_address: $HSM_CORE_GATEWAY_HOST
     volumes:
       - ../HSM-CORE-GATEWAY:/app
       - /app/node_modules
@@ -40,10 +40,10 @@ services:
       - ./.env
       - ./envs/hsm-core-auth.env
     ports:
-      - ${HSM-CORE-AUTH-WS-PORT}:${HSM-CORE-AUTH-WS-PORT}
+      - ${HSM_CORE_AUTH_WS_PORT}:${HSM_CORE_AUTH_WS_PORT}
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-CORE-AUTH-HOST
+        ipv4_address: $HSM_CORE_AUTH_HOST
     volumes:
       - ../HSM-CORE-AUTH:/app
       - /app/node_modules
@@ -61,7 +61,7 @@ services:
       - ./envs/hsm-core-coms.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-CORE-COMS-HOST
+        ipv4_address: $HSM_CORE_COMS_HOST
     volumes:
       - ../HSM-CORE-COMS:/app
       - /app/node_modules
@@ -79,7 +79,7 @@ services:
       - ./envs/hsm-core-common.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-CORE-COMMON-HOST
+        ipv4_address: $HSM_CORE_COMMON_HOST
     volumes:
       - ../HSM-CORE-COMMON:/app
       - /app/node_modules
@@ -97,7 +97,7 @@ services:
       - ./envs/hsm-has-gaa-gth-gsr-postulantes.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-HAS-GAA-GTH-GSR-POSTULANTES-HOST
+        ipv4_address: $HSM_HAS_GAA_GTH_GSR_POSTULANTES_HOST
     volumes:
       - ../HSM-HAS-GAA-GTH-GSR-POSTULANTES:/app
       - /app/node_modules
@@ -115,7 +115,7 @@ services:
       - ./envs/hsm-has-gaa-gth-gsr-trabajos.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-HAS-GAA-GTH-GSR-TRABAJOS-HOST
+        ipv4_address: $HSM_HAS_GAA_GTH_GSR_TRABAJOS_HOST
     volumes:
       - ../HSM-HAS-GAA-GTH-GSR-TRABAJOS:/app
       - /app/node_modules
@@ -133,7 +133,7 @@ services:
       - ./envs/hsm-core-users.env
     networks:
       HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM-CORE-USERS-HOST
+        ipv4_address: $HSM_CORE_USERS_HOST
     volumes:
       - ../HSM-CORE-USERS:/app
       - /app/node_modules
