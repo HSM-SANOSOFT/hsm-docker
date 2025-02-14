@@ -54,6 +54,18 @@ services:
       - ./envs/common.env
     restart: unless-stopped
 
+  #DOCS service
+  HSM-BE-DOCS-MS:
+    image: ghcr.io/hsm-sanosoft/hsm-be-docs-ms:latest
+    container_name: HSM-BE-DOCS-MS
+    networks:
+      app_network:
+        ipv4_address: $DOCS_MICROSERVICE_HOST
+    env_file:
+      - ./envs/global.env
+      - ./envs/docs.env
+    restart: unless-stopped
+
   #Examenes service
   HSM-BE-EXAMENES-MS:
     image: ghcr.io/hsm-sanosoft/hsm-be-examenes-ms:latest
