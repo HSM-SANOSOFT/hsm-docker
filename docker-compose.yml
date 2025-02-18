@@ -117,7 +117,8 @@ services:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_DOCS_HOST
     volumes:
-      - ../HSM-BE-CORE-DOCS:/app
+      - ../HSM-BE-CORE-DOCS:/app # Volumen para código fuente
+      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" # Volumen para archivos persistentes
       - /app/node_modules
     restart: unless-stopped
 
