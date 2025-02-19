@@ -9,6 +9,26 @@ networks:
 
 services:
 
+  # FRONTEND WEB
+  HSM-FE-WEB:
+    image: hsm-fe-web:latest
+    build:
+      context: ../HSM-FE-WEB
+      dockerfile: Dockerfile
+    container_name: HSM-FE-WEB
+    env_file:
+      - ./.env
+      - ./envs/hsm-fe-web.env
+    ports:
+      - ${HSM_FE_WEB_PORT}:4200
+    networks:
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $HSM_FE_WEB_HOST
+    volumes:
+      - ../HSM-FE-WEB:/app
+      - /app/node_modules
+    restart: unless-stopped
+
   # Gateway Service
   HSM-BE-CORE-GATEWAY:
     image: hsm-be-core-gateway:latest
