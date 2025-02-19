@@ -123,6 +123,25 @@ services:
       - /app/node_modules
     restart: unless-stopped
 
+  # Docs Service
+  HSM-BE-CORE-DOCS:
+    image: hsm-be-core-docs:latest
+    build:
+      context: ../HSM-BE-CORE-DOCS
+      dockerfile: Dockerfile
+    container_name: HSM-BE-CORE-DOCS
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-docs.env
+    networks:
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $HSM_BE_CORE_DOCS_HOST
+    volumes:
+      - ../HSM-BE-CORE-DOCS:/app # Volumen para código fuente
+      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" # Volumen para archivos persistentes
+      - /app/node_modules
+    restart: unless-stopped
+
   # Postulantes Service
   HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:
     image: hsm-be-has-gaa-gth-gsr-postulantes:latest
@@ -162,5 +181,3 @@ services:
       - ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:/app
       - /app/node_modules
     restart: unless-stopped
-
-  
