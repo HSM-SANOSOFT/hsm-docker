@@ -7,6 +7,8 @@ networks:
       config:
         - subnet: $HSM_DOCKER_SUBNET
 
+           
+
 services:
 
   # FRONTEND WEB
@@ -86,6 +88,9 @@ services:
       - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
     restart: unless-stopped
+    dns: 
+      - 8.8.8.8
+      - 8.8.4.4
 
   # Common Service
   HSM-BE-CORE-COMMON:
