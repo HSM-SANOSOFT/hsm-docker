@@ -10,5 +10,6 @@ pnpm add eslint-plugin-simple-import-sort@latest -r
 pnpm add globals@latest -r
 pnpm add @nestjs/mapped-types@latest -r
 
-pnpm add class-validator@latest class-transformer@latest dotenv@latest @nestjs/microservices@latest oracledb@latest -r
+pnpm add -D @nestjs/config@latest @nestjs/mapped-types@latest
+pnpm add class-validator@latest class-transformer@latest dotenv@latest @nestjs/microservices@latest oracledb@latest joi@latest -r
 pnpm add eslint-plugin-simple-import-sort@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest typescript-eslint@latest -r

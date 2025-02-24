@@ -86,6 +86,24 @@ services:
       - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
     restart: unless-stopped
+    
+    # Communications Service
+  HSM-BE-CORE-COMS-EMAIL:
+    image: hsm-be-core-coms-emial:latest
+    build:
+      context: ../HSM-BE-CORE-COMS-EMAIL
+      dockerfile: Dockerfile
+    container_name: HSM-BE-CORE-COMS
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-coms-email.env
+    networks:
+      HSM-BACKEND-NETWORK:
+        ipv4_address: $HSM_BE_CORE_COMS_EMAIL_HOST
+    volumes:
+      - ../HSM-BE-CORE-COMS-EMAIL:/app
+      - /app/node_modules
+    restart: unless-stopped
 
   # Common Service
   HSM-BE-CORE-COMMON:
