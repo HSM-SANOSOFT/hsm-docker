@@ -98,7 +98,7 @@ services:
     build:
       context: ../HSM-BE-CORE-COMS-EMAIL
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-COMS
+    container_name: HSM-BE-CORE-COMS-EMAIL
     env_file:
       - ./.env
       - ./envs/hsm-be-core-coms-email.env
