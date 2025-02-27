@@ -94,7 +94,7 @@ services:
     
     # Communications Service
   HSM-BE-CORE-COMS-EMAIL:
-    image: hsm-be-core-coms-emial:latest
+    image: hsm-be-core-coms-email:latest
     build:
       context: ../HSM-BE-CORE-COMS-EMAIL
       dockerfile: Dockerfile
