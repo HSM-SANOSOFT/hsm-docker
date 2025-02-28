@@ -5,7 +5,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: $DOCKER_SUBNET
+        - subnet: $HSM_DOCKER_SUBNET
 
 services:
   #FRONTED WEB
