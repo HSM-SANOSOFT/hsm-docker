@@ -7,8 +7,6 @@ networks:
       config:
         - subnet: $HSM_DOCKER_SUBNET
 
-           
-
 services:
 
   # FRONTEND WEB
@@ -87,12 +85,12 @@ services:
     volumes:
       - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
-    restart: unless-stopped
     dns: 
       - 8.8.8.8
       - 8.8.4.4
+    restart: unless-stopped
     
-    # Communications Service
+    # Communications Email Service
   HSM-BE-CORE-COMS-EMAIL:
     image: hsm-be-core-coms-email:latest
     build:
@@ -102,12 +100,17 @@ services:
     env_file:
       - ./.env
       - ./envs/hsm-be-core-coms-email.env
+    ports:
+      - ${HSM_BE_CORE_COMS_EMAIL_PORT}:${HSM_BE_CORE_COMS_EMAIL_PORT}
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_COMS_EMAIL_HOST
     volumes:
       - ../HSM-BE-CORE-COMS-EMAIL:/app
       - /app/node_modules
+    dns: 
+      - 8.8.8.8
+      - 8.8.4.4
     restart: unless-stopped
 
   # Common Service
