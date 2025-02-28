@@ -16,17 +16,17 @@ services:
       context: ../HSM-FE-WEB
       dockerfile: Dockerfile
     container_name: HSM-FE-WEB
-    env_file:
-      - ./.env
-      - ./envs/hsm-fe-web.env
     ports:
-      - ${HSM_FE_WEB_PORT}:4200
+      - $HSM_FE_WEB_PORT:4200
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_FE_WEB_HOST
     volumes:
       - ../HSM-FE-WEB:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-fe-web.env
     restart: unless-stopped
 
   # Gateway Service
@@ -36,17 +36,17 @@ services:
       context: ../HSM-BE-CORE-GATEWAY
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-GATEWAY
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-gateway.env
     ports:
-      - ${HSM_BE_CORE_GATEWAY_PORT}:${HSM_BE_CORE_GATEWAY_PORT}
+      - $HSM_BE_CORE_GATEWAY_PORT:$HSM_BE_CORE_GATEWAY_PORT
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_GATEWAY_HOST
     volumes:
       - ../HSM-BE-CORE-GATEWAY:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-gateway.env
     restart: unless-stopped
 
   # Auth Service
@@ -56,17 +56,17 @@ services:
       context: ../HSM-BE-CORE-AUTH
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-AUTH
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-auth.env
     ports:
-      - ${HSM_BE_CORE_AUTH_WS_PORT}:${HSM_BE_CORE_AUTH_WS_PORT}
+      - $HSM_BE_CORE_AUTH_WS_PORT:$HSM_BE_CORE_AUTH_WS_PORT
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_AUTH_HOST
     volumes:
       - ../HSM-BE-CORE-AUTH:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-auth.env
     restart: unless-stopped
 
   # Communications Service
@@ -76,9 +76,6 @@ services:
       context: ../HSM-BE-CORE-COMS
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-COMS
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-coms.env
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_COMS_HOST
@@ -88,6 +85,9 @@ services:
     dns: 
       - 8.8.8.8
       - 8.8.4.4
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-coms.env
     restart: unless-stopped
     
     # Communications Email Service
@@ -97,11 +97,8 @@ services:
       context: ../HSM-BE-CORE-COMS-EMAIL
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-COMS-EMAIL
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-coms-email.env
     ports:
-      - ${HSM_BE_CORE_COMS_EMAIL_PORT}:${HSM_BE_CORE_COMS_EMAIL_PORT}
+      - $HSM_BE_CORE_COMS_EMAIL_PORT:$HSM_BE_CORE_COMS_EMAIL_PORT
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_COMS_EMAIL_HOST
@@ -111,6 +108,9 @@ services:
     dns: 
       - 8.8.8.8
       - 8.8.4.4
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-coms-email.env
     restart: unless-stopped
 
   # Common Service
@@ -120,15 +120,15 @@ services:
       context: ../HSM-BE-CORE-COMMON
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-COMMON
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-common.env
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_COMMON_HOST
     volumes:
       - ../HSM-BE-CORE-COMMON:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-common.env
     restart: unless-stopped
 
   # Users Service
@@ -138,15 +138,15 @@ services:
       context: ../HSM-BE-CORE-USERS
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-USERS
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-users.env
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_USERS_HOST
     volumes:
       - ../HSM-BE-CORE-USERS:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-users.env
     restart: unless-stopped
 
   # Docs Service
@@ -156,9 +156,6 @@ services:
       context: ../HSM-BE-CORE-DOCS
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-DOCS
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-docs.env
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_CORE_DOCS_HOST
@@ -166,6 +163,9 @@ services:
       - ../HSM-BE-CORE-DOCS:/app # Volumen para código fuente
       - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" # Volumen para archivos persistentes
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-core-docs.env
     restart: unless-stopped
 
   # Postulantes Service
@@ -175,17 +175,15 @@ services:
       context: ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
       dockerfile: Dockerfile
     container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
-    ports:
-      - ${HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_PORT}:${HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_PORT}
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_HOST
     volumes:
       - ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
     restart: unless-stopped
 
   # Trabajo Service
@@ -195,15 +193,13 @@ services:
       context: ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
       dockerfile: Dockerfile
     container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
-    ports:
-      - ${HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_PORT}:${HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_PORT}
     networks:
       HSM-BACKEND-NETWORK:
         ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_HOST
     volumes:
       - ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:/app
       - /app/node_modules
+    env_file:
+      - ./.env
+      - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
     restart: unless-stopped
