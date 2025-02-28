@@ -111,7 +111,7 @@ services:
     dns: 
       - 8.8.8.8
       - 8.8.4.4
-    restart: unless-stopped
+    restart: unless-stopped 
 
   # Common Service
   HSM-BE-CORE-COMMON:
