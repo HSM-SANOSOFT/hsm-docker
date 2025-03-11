@@ -62,7 +62,7 @@ services:
       - 8.8.4.4
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-coms-email.env
+      - ./envs/hsm-be-core-coms.env
     restart: unless-stopped
     
   #Coms Email service
