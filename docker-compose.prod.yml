@@ -1,11 +1,8 @@
 name: HSM-BACKEND
 
 networks:
-  app_network:
+  HSM-BACKEND-NETWORK:
     driver: bridge
-    ipam:
-      config:
-        - subnet: $HSM_DOCKER_SUBNET
 
 services:
   #FRONTED WEB
@@ -15,8 +12,7 @@ services:
     ports:
       - $HSM_FE_WEB_PORT:4200
     networks:
-      app_network:
-        ipv4_address: $HSM_FE_WEB_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-fe-web.env
@@ -29,8 +25,7 @@ services:
     ports:
       - $HSM_BE_CORE_GATEWAY_PORT:$HSM_BE_CORE_GATEWAY_PORT
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_GATEWAY_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-core-gateway.env
@@ -43,8 +38,7 @@ services:
     ports:
       - $HSM_BE_CORE_AUTH_WS_PORT:$HSM_BE_CORE_AUTH_WS_PORT
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_AUTH_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-core-auth.env
@@ -55,8 +49,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-core-coms:latest
     container_name: HSM-BE-CORE-COMS
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_COMS_HOST
+      - HSM-BACKEND-NETWORK
     dns: 
       - 8.8.8.8
       - 8.8.4.4
@@ -72,8 +65,7 @@ services:
     ports:
       - $HSM_BE_CORE_COMS_EMAIL_PORT:$HSM_BE_CORE_COMS_EMAIL_PORT
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_COMS_EMAIL_HOST
+      - HSM-BACKEND-NETWORK
     dns: 
       - 8.8.8.8
       - 8.8.4.4
@@ -87,8 +79,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-core-common:latest
     container_name: HSM-BE-CORE-COMMON
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_COMMON_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-core-common.env
@@ -99,8 +90,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-core-users:latest
     container_name: HSM-BE-CORE-USERS
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_CORE_USERS_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-core-users.env
@@ -111,8 +101,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-core-docs:latest
     container_name: HSM-BE-CORE-DOCS
     networks:
-      app_network:
-        ipv4_address:  $HSM_BE_CORE_DOCS_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-core-docs.env
@@ -124,8 +113,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-has-gaa-gth-gsr-postulantes:latest
     container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
@@ -137,8 +125,7 @@ services:
     image: ghcr.io/hsm-sanosoft/hsm-be-has-gaa-gth-gsr-trabajos:latest
     container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
     networks:
-      app_network:
-        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_HOST
+      - HSM-BACKEND-NETWORK
     env_file:
       - ./.env
       - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
