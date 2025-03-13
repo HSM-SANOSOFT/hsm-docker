@@ -3,9 +3,6 @@ name: HSM-BACKEND
 networks:
   HSM-BACKEND-NETWORK:
     driver: bridge
-    ipam:
-      config:
-        - subnet: $HSM_DOCKER_SUBNET
 
 services:
 
@@ -19,8 +16,7 @@ services:
     ports:
       - $HSM_FE_WEB_PORT:4200
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_FE_WEB_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-FE-WEB:/app
       - /app/node_modules
@@ -39,8 +35,7 @@ services:
     ports:
       - $HSM_BE_CORE_GATEWAY_PORT:$HSM_BE_CORE_GATEWAY_PORT
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_GATEWAY_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-GATEWAY:/app
       - /app/node_modules
@@ -59,8 +54,7 @@ services:
     ports:
       - $HSM_BE_CORE_AUTH_WS_PORT:$HSM_BE_CORE_AUTH_WS_PORT
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_AUTH_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-AUTH:/app
       - /app/node_modules
@@ -77,8 +71,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-COMS
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_COMS_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
@@ -89,29 +82,6 @@ services:
       - ./.env
       - ./envs/hsm-be-core-coms.env
     restart: unless-stopped
-    
-    # Communications Email Service
-  HSM-BE-CORE-COMS-EMAIL:
-    image: hsm-be-core-coms-email:latest
-    build:
-      context: ../HSM-BE-CORE-COMS-EMAIL
-      dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-COMS-EMAIL
-    ports:
-      - $HSM_BE_CORE_COMS_EMAIL_PORT:$HSM_BE_CORE_COMS_EMAIL_PORT
-    networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_COMS_EMAIL_HOST
-    volumes:
-      - ../HSM-BE-CORE-COMS-EMAIL:/app
-      - /app/node_modules
-    dns: 
-      - 8.8.8.8
-      - 8.8.4.4
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-coms-email.env
-    restart: unless-stopped
 
   # Common Service
   HSM-BE-CORE-COMMON:
@@ -121,8 +91,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-COMMON
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_COMMON_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-COMMON:/app
       - /app/node_modules
@@ -139,8 +108,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-USERS
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_USERS_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-USERS:/app
       - /app/node_modules
@@ -157,8 +125,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-DOCS
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_CORE_DOCS_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-CORE-DOCS:/app # Volumen para código fuente
       - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" # Volumen para archivos persistentes
@@ -176,8 +143,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_POSTULANTES_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:/app
       - /app/node_modules
@@ -194,8 +160,7 @@ services:
       dockerfile: Dockerfile
     container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
     networks:
-      HSM-BACKEND-NETWORK:
-        ipv4_address: $HSM_BE_HAS_GAA_GTH_GSR_TRABAJOS_HOST
+      - HSM-BACKEND-NETWORK
     volumes:
       - ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:/app
       - /app/node_modules
