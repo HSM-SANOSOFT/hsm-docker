@@ -7,7 +7,7 @@ networks:
 services:
 
   # FRONTEND WEB
-  HSM-FE-WEB:
+  ${HSM_FE_WEB_PORT}:
     image: hsm-fe-web:latest
     build:
       context: ../HSM-FE-WEB
@@ -51,8 +51,6 @@ services:
       context: ../HSM-BE-CORE-AUTH
       dockerfile: Dockerfile
     container_name: HSM-BE-CORE-AUTH
-    ports:
-      - $HSM_BE_CORE_AUTH_WS_PORT:$HSM_BE_CORE_AUTH_WS_PORT
     networks:
       - HSM-BACKEND-NETWORK
     volumes:
@@ -75,9 +73,6 @@ services:
     volumes:
       - ../HSM-BE-CORE-COMS:/app
       - /app/node_modules
-    dns: 
-      - 8.8.8.8
-      - 8.8.4.4
     env_file:
       - ./.env
       - ./envs/hsm-be-core-coms.env
@@ -127,8 +122,8 @@ services:
     networks:
       - HSM-BACKEND-NETWORK
     volumes:
-      - ../HSM-BE-CORE-DOCS:/app # Volumen para código fuente
-      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" # Volumen para archivos persistentes
+      - ../HSM-BE-CORE-DOCS:/app 
+      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" 
       - /app/node_modules
     env_file:
       - ./.env
