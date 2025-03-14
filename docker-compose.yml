@@ -1,165 +1,165 @@
-name: HSM-BACKEND
+name: hsm
 
 networks:
-  HSM-BACKEND-NETWORK:
+  hsm-backend-network:
     driver: bridge
 
 services:
 
   # FRONTEND WEB
-  ${HSM_FE_WEB_PORT}:
-    image: hsm-fe-web:latest
+  hsm-fe-web:
+    image: ${hsm_fe_web}:latest
     build:
-      context: ../HSM-FE-WEB
+      context: ../${hsm_fe_web}
       dockerfile: Dockerfile
-    container_name: HSM-FE-WEB
+    container_name: ${hsm_fe_web}
     ports:
-      - $HSM_FE_WEB_PORT:4200
+      - ${hsm_fe_web_port}:4200
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-FE-WEB:/app
+      - ../${hsm_fe_web}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-fe-web.env
+      - ./envs/${hsm_fe_web}.env
     restart: unless-stopped
 
   # Gateway Service
-  HSM-BE-CORE-GATEWAY:
-    image: hsm-be-core-gateway:latest
+  hsm-be-core-gateway:
+    image: ${hsm_be_core_gateway}:latest
     build:
-      context: ../HSM-BE-CORE-GATEWAY
+      context: ../${hsm_be_core_gateway}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-GATEWAY
+    container_name: ${hsm_be_core_gateway}
     ports:
-      - $HSM_BE_CORE_GATEWAY_PORT:$HSM_BE_CORE_GATEWAY_PORT
+      - ${hsm_be_core_gateway_port}:${hsm_be_core_gateway_port}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-GATEWAY:/app
+      - ../${hsm_be_core_gateway}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-gateway.env
+      - ./envs/${hsm_be_core_gateway}.env
     restart: unless-stopped
 
   # Auth Service
-  HSM-BE-CORE-AUTH:
-    image: hsm-be-core-auth:latest
+  hsm-be-core-auth:
+    image: ${hsm_be_core_auth}:latest
     build:
-      context: ../HSM-BE-CORE-AUTH
+      context: ../${hsm_be_core_auth}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-AUTH
+    container_name: ${hsm_be_core_auth}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-AUTH:/app
+      - ../${hsm_be_core_auth}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-auth.env
+      - ./envs/${hsm_be_core_auth}.env
     restart: unless-stopped
 
   # Communications Service
-  HSM-BE-CORE-COMS:
-    image: hsm-be-core-coms:latest
+  hsm-be-core-coms:
+    image: ${hsm_be_core_coms}:latest
     build:
-      context: ../HSM-BE-CORE-COMS
+      context: ../${hsm_be_core_coms}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-COMS
+    container_name: ${hsm_be_core_coms}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-COMS:/app
+      - ../${hsm_be_core_coms}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-coms.env
+      - ./envs/${hsm_be_core_coms}.env
     restart: unless-stopped
 
   # Common Service
-  HSM-BE-CORE-COMMON:
-    image: hsm-be-core-common:latest
+  hsm-be-core-common:
+    image: ${hsm_be_core_common}:latest
     build:
-      context: ../HSM-BE-CORE-COMMON
+      context: ../${hsm_be_core_common}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-COMMON
+    container_name: ${hsm_be_core_common}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-COMMON:/app
+      - ../${hsm_be_core_common}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-common.env
+      - ./envs/${hsm_be_core_common}.env
     restart: unless-stopped
 
   # Users Service
-  HSM-BE-CORE-USERS:
-    image: hsm-be-core-users:latest
+  hsm-be-core-users:
+    image: ${hsm_be_core_users}:latest
     build:
-      context: ../HSM-BE-CORE-USERS
+      context: ../${hsm_be_core_users}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-USERS
+    container_name: ${hsm_be_core_users}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-USERS:/app
+      - ../${hsm_be_core_users}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-users.env
+      - ./envs/${hsm_be_core_users}.env
     restart: unless-stopped
 
   # Docs Service
-  HSM-BE-CORE-DOCS:
-    image: hsm-be-core-docs:latest
+  hsm-be-core-docs:
+    image: ${hsm_be_core_docs}:latest
     build:
-      context: ../HSM-BE-CORE-DOCS
+      context: ../${hsm_be_core_docs}
       dockerfile: Dockerfile
-    container_name: HSM-BE-CORE-DOCS
+    container_name: ${hsm_be_core_docs}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-CORE-DOCS:/app 
-      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads" 
+      - ../${hsm_be_core_docs}:/app
+      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads"
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-docs.env
+      - ./envs/${hsm_be_core_docs}.env
     restart: unless-stopped
 
   # Postulantes Service
-  HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:
-    image: hsm-be-has-gaa-gth-gsr-postulantes:latest
+  hsm-be-has-gaa-gth-gsr-postulantes:
+    image: ${hsm_be_has_gaa_gth_gsr_postulantes}:latest
     build:
-      context: ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
+      context: ../${hsm_be_has_gaa_gth_gsr_postulantes}
       dockerfile: Dockerfile
-    container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
+    container_name: ${hsm_be_has_gaa_gth_gsr_postulantes}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:/app
+      - ../${hsm_be_has_gaa_gth_gsr_postulantes}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
+      - ./envs/${hsm_be_has_gaa_gth_gsr_postulantes}.env
     restart: unless-stopped
 
   # Trabajo Service
-  HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:
-    image: hsm-be-has-gaa-gth-gsr-trabajos:latest
+  hsm-be-has-gaa-gth-gsr-trabajos:
+    image: ${hsm_be_has_gaa_gth_gsr_trabajos}:latest
     build:
-      context: ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
+      context: ../${hsm_be_has_gaa_gth_gsr_trabajos}
       dockerfile: Dockerfile
-    container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
+    container_name: ${hsm_be_has_gaa_gth_gsr_trabajos}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     volumes:
-      - ../HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:/app
+      - ../${hsm_be_has_gaa_gth_gsr_trabajos}:/app
       - /app/node_modules
     env_file:
       - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
+      - ./envs/${hsm_be_has_gaa_gth_gsr_trabajos}.env
     restart: unless-stopped

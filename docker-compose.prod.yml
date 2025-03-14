@@ -1,132 +1,112 @@
-name: HSM-BACKEND
+name: hsm
 
 networks:
-  HSM-BACKEND-NETWORK:
+  hsm-backend-network:
     driver: bridge
 
 services:
-  #FRONTED WEB
-  HSM-FE-WEB:
-    image: ghcr.io/hsm-sanosoft/hsm-fe-web:latest
-    container_name: HSM-FE-WEB
+
+  # FRONTEND WEB
+  hsm-fe-web:
+    image: ghcr.io/hsm-sanosoft/${hsm_fe_web}:latest
+    container_name: ${hsm_fe_web}
     ports:
-      - $HSM_FE_WEB_PORT:4200
+      - ${hsm_fe_web_port}:4200
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-fe-web.env
+      - ./envs/${hsm_fe_web}.env
     restart: unless-stopped
 
-  #Gateway service
-  HSM-BE-CORE-GATEWAY:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-gateway:latest
-    container_name: HSM-BE-CORE-GATEWAY
+  # Gateway Service
+  hsm-be-core-gateway:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_gateway}:latest
+    container_name: ${hsm_be_core_gateway}
     ports:
-      - $HSM_BE_CORE_GATEWAY_PORT:$HSM_BE_CORE_GATEWAY_PORT
+      - ${hsm_be_core_gateway_port}:${hsm_be_core_gateway_port}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-gateway.env
+      - ./envs/${hsm_be_core_gateway}.env
     restart: unless-stopped
 
-  #Auth service
-  HSM-BE-CORE-AUTH:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-auth:latest
-    container_name: HSM-BE-CORE-AUTH
+  # Auth Service
+  hsm-be-core-auth:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_auth}:latest
+    container_name: ${hsm_be_core_auth}
     ports:
-      - $HSM_BE_CORE_AUTH_WS_PORT:$HSM_BE_CORE_AUTH_WS_PORT
+      - ${hsm_be_core_auth_ws_port}:${hsm_be_core_auth_ws_port}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-auth.env
+      - ./envs/${hsm_be_core_auth}.env
     restart: unless-stopped
 
-  #Coms service
-  HSM-BE-CORE-COMS:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-coms:latest
-    container_name: HSM-BE-CORE-COMS
+  # Communications Service
+  hsm-be-core-coms:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_coms}:latest
+    container_name: ${hsm_be_core_coms}
     networks:
-      - HSM-BACKEND-NETWORK
-    dns: 
-      - 8.8.8.8
-      - 8.8.4.4
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-coms.env
-    restart: unless-stopped
-    
-  #Coms Email service
-  HSM-BE-CORE-COMS-EMAIL:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-coms-email:latest
-    container_name: HSM-BE-CORE-COMS-EMAIL
-    ports:
-      - $HSM_BE_CORE_COMS_EMAIL_PORT:$HSM_BE_CORE_COMS_EMAIL_PORT
-    networks:
-      - HSM-BACKEND-NETWORK
-    dns: 
-      - 8.8.8.8
-      - 8.8.4.4
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-coms-email.env
+      - ./envs/${hsm_be_core_coms}.env
     restart: unless-stopped
 
-  #COMMON service
-  HSM-BE-CORE-COMMON:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-common:latest
-    container_name: HSM-BE-CORE-COMMON
+  # Common Service
+  hsm-be-core-common:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_common}:latest
+    container_name: ${hsm_be_core_common}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-common.env
+      - ./envs/${hsm_be_core_common}.env
     restart: unless-stopped
 
- # Users Service
-  HSM-BE-CORE-USERS:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-users:latest
-    container_name: HSM-BE-CORE-USERS
+  # Users Service
+  hsm-be-core-users:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_users}:latest
+    container_name: ${hsm_be_core_users}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-core-users.env
-    restart: unless-stopped
-    
-  #DOCS service
-  HSM-BE-CORE-DOCS:
-    image: ghcr.io/hsm-sanosoft/hsm-be-core-docs:latest
-    container_name: HSM-BE-CORE-DOCS
-    networks:
-      - HSM-BACKEND-NETWORK
-    env_file:
-      - ./.env
-      - ./envs/hsm-be-core-docs.env
+      - ./envs/${hsm_be_core_users}.env
     restart: unless-stopped
 
-  
+  # Docs Service
+  hsm-be-core-docs:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_core_docs}:latest
+    container_name: ${hsm_be_core_docs}
+    networks:
+      - hsm-backend-network
+    env_file:
+      - ./.env
+      - ./envs/${hsm_be_core_docs}.env
+    restart: unless-stopped
+
   # Postulantes Service
-  HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES:
-    image: ghcr.io/hsm-sanosoft/hsm-be-has-gaa-gth-gsr-postulantes:latest
-    container_name: HSM-BE-HAS-GAA-GTH-GSR-POSTULANTES
+  hsm-be-has-gaa-gth-gsr-postulantes:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_has_gaa_gth_gsr_postulantes}:latest
+    container_name: ${hsm_be_has_gaa_gth_gsr_postulantes}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-postulantes.env
+      - ./envs/${hsm_be_has_gaa_gth_gsr_postulantes}.env
     restart: unless-stopped
-
 
   # Trabajo Service
-  HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS:
-    image: ghcr.io/hsm-sanosoft/hsm-be-has-gaa-gth-gsr-trabajos:latest
-    container_name: HSM-BE-HAS-GAA-GTH-GSR-TRABAJOS
+  hsm-be-has-gaa-gth-gsr-trabajos:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_has_gaa_gth_gsr_trabajos}:latest
+    container_name: ${hsm_be_has_gaa_gth_gsr_trabajos}
     networks:
-      - HSM-BACKEND-NETWORK
+      - hsm-backend-network
     env_file:
       - ./.env
-      - ./envs/hsm-be-has-gaa-gth-gsr-trabajos.env
+      - ./envs/${hsm_be_has_gaa_gth_gsr_trabajos}.env
     restart: unless-stopped
