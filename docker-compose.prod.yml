@@ -36,8 +36,6 @@ services:
   hsm-be-core-auth:
     image: ghcr.io/hsm-sanosoft/${hsm_be_core_auth}:latest
     container_name: ${hsm_be_core_auth}
-    ports:
-      - ${hsm_be_core_auth_ws_port}:${hsm_be_core_auth_ws_port}
     networks:
       - hsm-backend-network
     env_file:
