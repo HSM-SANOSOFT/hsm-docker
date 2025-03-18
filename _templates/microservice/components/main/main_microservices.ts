@@ -1,21 +1,17 @@
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { MicroserviceOptions } from '@nestjs/microservices';
-import { Transport } from '@nestjs/microservices';
+import { RpcException, Transport } from '@nestjs/microservices';
 
 import { AppModule } from './app.module';
-import { envs } from './config';
 
 async function bootstrap() {
-  const logger = new Logger('FARMACIA');
-
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
       transport: Transport.TCP,
       options: {
-        host: envs.HOST
-        port: envs.PORT,
+        host: '0.0.0.0',
       },
     },
   );
@@ -24,9 +20,12 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      disableErrorMessages: true,
+      exceptionFactory: errors => {
+        return new RpcException(errors);
+      },
     }),
   );
   await app.listen();
-  logger.log(`Microservice is active on port ${envs.PORT}`);
 }
-bootstrap();
+void bootstrap();

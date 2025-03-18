@@ -108,3 +108,36 @@ services:
       - ./.env
       - ./envs/${hsm_be_has_gaa_gth_gsr_trabajos}.env
     restart: unless-stopped
+
+  # Transaccion Service
+  hsm-be-has-cob-gdp-transaccion:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_has_cob_gdp_transaccion}:latest
+    container_name: ${hsm_be_has_cob_gdp_transaccion}
+    networks:
+      - hsm-backend-network
+    env_file:
+      - ./.env
+      - ./envs/${hsm_be_has_cob_gdp_transaccion}.env
+    restart: unless-stopped
+
+  # Compensacion Service
+  hsm-be-has-cob-gdp-compensacion:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_has_cob_gdp_compensacion}:latest
+    container_name: ${hsm_be_has_cob_gdp_compensacion}
+    networks:
+      - hsm-backend-network
+    env_file:
+      - ./.env
+      - ./envs/${hsm_be_has_cob_gdp_compensacion}.env
+    restart: unless-stopped
+
+  # Recaudo Service
+  hsm-be-has-cob-gdp-recaudo:
+    image: ghcr.io/hsm-sanosoft/${hsm_be_has_cob_gdp_recaudo}:latest
+    container_name: ${hsm_be_has_cob_gdp_recaudo}
+    networks:
+      - hsm-backend-network
+    env_file:
+      - ./.env
+      - ./envs/${hsm_be_has_cob_gdp_recaudo}.env
+    restart: unless-stopped

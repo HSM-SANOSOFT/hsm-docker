@@ -163,3 +163,54 @@ services:
       - ./.env
       - ./envs/${hsm_be_has_gaa_gth_gsr_trabajos}.env
     restart: unless-stopped
+
+  # Transaccion Service
+  hsm-be-has-cob-gdp-transaccion:
+      image: ${hsm_be_has_cob_gdp_transaccion}:latest
+      build:
+        context: ../${hsm_be_has_cob_gdp_transaccion}
+        dockerfile: Dockerfile
+      container_name: ${hsm_be_has_cob_gdp_transaccion}
+      networks:
+        - hsm-backend-network
+      volumes:
+        - ../${hsm_be_has_cob_gdp_transaccion}:/app
+        - /app/node_modules
+      env_file:
+        - ./.env
+        - ./envs/${hsm_be_has_cob_gdp_transaccion}.env
+      restart: unless-stopped
+      
+  # Compensacion Service
+  hsm-be-has-cob-gdp-compensacion:
+      image: ${hsm_be_has_cob_gdp_compensacion}:latest
+      build:
+        context: ../${hsm_be_has_cob_gdp_compensacion}
+        dockerfile: Dockerfile
+      container_name: ${hsm_be_has_cob_gdp_compensacion}
+      networks:
+        - hsm-backend-network
+      volumes:
+        - ../${hsm_be_has_cob_gdp_compensacion}:/app
+        - /app/node_modules
+      env_file:
+        - ./.env
+        - ./envs/${hsm_be_has_cob_gdp_compensacion}.env
+      restart: unless-stopped
+
+  # Recaudo Service
+  hsm-be-has-cob-gdp-recaudo:
+      image: ${hsm_be_has_cob_gdp_recaudo}:latest
+      build:
+        context: ../${hsm_be_has_cob_gdp_recaudo}
+        dockerfile: Dockerfile
+      container_name: ${hsm_be_has_cob_gdp_recaudo}
+      networks:
+        - hsm-backend-network
+      volumes:
+        - ../${hsm_be_has_cob_gdp_recaudo}:/app
+        - /app/node_modules
+      env_file:
+        - ./.env
+        - ./envs/${hsm_be_has_cob_gdp_recaudo}.env
+      restart: unless-stopped
