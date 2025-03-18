@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+
+import { DatabaseService } from './database/database.service';
 
 @Injectable()
 export class AppService {
-  InitMS() {
-    return 'Microservice is up and running!';
-  }
+  private readonly logger = new Logger();
+  constructor(private readonly databaseService: DatabaseService) {}
 }
