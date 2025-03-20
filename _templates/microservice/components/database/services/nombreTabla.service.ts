@@ -3,17 +3,27 @@ import { Injectable, Logger } from '@nestjs/common';
 import { DatabaseService } from '../database.service';
 
 @Injectable()
-export class NombreTablaService {
+export class CuentasPagoApiService {
   private readonly logger = new Logger();
   constructor(private readonly databaseService: DatabaseService) {}
 
-  async create() {}
+  async create() {
+    //const results = await this.databaseService.execute()
+  }
 
-  async update() {}
+  async update() {
+    //const results = await this.databaseService.execute()
+  }
 
-  async delete() {}
+  async delete() {
+    //const results = await this.databaseService.execute()
+  }
 
-  async getOne() {}
+  async getOne() {
+    //const results = await this.databaseService.execute()
+  }
 
-  async getMany() {}
+  async getMany() {
+    //const results = await this.databaseService.execute()
+  }
 }
