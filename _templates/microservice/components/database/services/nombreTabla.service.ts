@@ -3,7 +3,7 @@ import { RpcException } from '@nestjs/microservices';
 import * as oracledb from 'oracledb';
 
 @Injectable()
-export class NombreTabla {
+export class NombreTablaService {
   private readonly logger = new Logger();
   constructor(
     @Inject('DATABASE_CONNECTION') private readonly dbPool: oracledb.Pool,
