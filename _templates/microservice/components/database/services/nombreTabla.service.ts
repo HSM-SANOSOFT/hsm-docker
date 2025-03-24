@@ -3,7 +3,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { DatabaseService } from '../database.service';
 
 @Injectable()
-export class CuentasPagoApiService {
+export class NombreTablaService {
   private readonly logger = new Logger();
   constructor(private readonly databaseService: DatabaseService) {}
 
