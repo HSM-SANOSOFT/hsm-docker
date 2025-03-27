@@ -12,5 +12,5 @@ pnpm add @nestjs/mapped-types@latest -r
 
 pnpm add @nestjs/config@latest @nestjs/mapped-types@latest -D -r
 pnpm add class-validator@latest class-transformer@latest dotenv@latest @nestjs/microservices@latest oracledb@latest joi@latest -r
-pnpm add eslint-plugin-simple-import-sort@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest typescript-eslint@latest @eslint/js@latest -r
+pnpm add eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest typescript-eslint@latest @eslint/js@latest eslint-config-prettier@latest eslint-plugin-unused-imports@latest prettier@latest eslint@latest -D -r
 pnpm add @types/oracledb -D -r
