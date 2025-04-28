@@ -1,0 +1,20 @@
+name: pull-changes
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+    pull:
+        runs-on: self-hosted
+        steps:
+            -   name: pull
+                run: |
+                  cd
+                  cd hsm-k3s
+                  echo "Pulling changes from main branch"
+                  git pull origin main
+            - name: apply
+              run: |
+                echo "Applying changes to Kubernetes"
+                kubectl apply -R -f ./app
