@@ -1,0 +1,18 @@
+services:
+  hsm-be-has-gaa-gth-gsr-postulantes:
+    image: hsm-be-has-gaa-gth-gsr-postulantes:latest
+    build:
+      context: ../../../../../../../../hsm-be-has-gaa-gth-gsr-postulantes
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-has-gaa-gth-gsr-postulantes
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../../../../hsm-be-has-gaa-gth-gsr-postulantes:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../../../../.env
+    environment:
+      SECRET_PATH: /be/has/gaa/gth/gsr/postulantes
+    restart: unless-stopped
+  

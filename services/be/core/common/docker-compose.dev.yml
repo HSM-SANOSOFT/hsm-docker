@@ -1,0 +1,17 @@
+services:
+  hsm-be-core-common:
+    image: hsm-be-core-common:latest
+    build:
+      context: ../../../../../hsm-be-core-common
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-core-common
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../hsm-be-core-common:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../.env
+    environment:
+      SECRET_PATH: /be/core/common
+    restart: unless-stopped

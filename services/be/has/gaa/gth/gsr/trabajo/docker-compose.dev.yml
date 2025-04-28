@@ -1,0 +1,17 @@
+services:
+  hsm-be-has-gaa-gth-gsr-trabajos:
+    image: hsm-be-has-gaa-gth-gsr-trabajos:latest
+    build:
+      context: ../../../../../../../../hsm-be-has-gaa-gth-gsr-trabajos
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-has-gaa-gth-gsr-trabajos
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../../../../hsm-be-has-gaa-gth-gsr-trabajos:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../../../../.env
+    environment:
+      SECRET_PATH: /be/has/gaa/gth/gsr/trabajos
+    restart: unless-stopped

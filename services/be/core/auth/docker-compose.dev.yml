@@ -1,0 +1,17 @@
+services:
+  hsm-be-core-auth:
+    image: hsm-be-core-auth:latest
+    build:
+      context: ../../../../../hsm-be-core-auth
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-core-auth
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../hsm-be-core-auth:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../.env
+    environment:
+      SECRET_PATH: /be/core/auth
+    restart: unless-stopped

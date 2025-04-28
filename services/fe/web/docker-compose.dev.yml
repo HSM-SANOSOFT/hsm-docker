@@ -1,0 +1,20 @@
+services:
+  hsm-fe-web:
+    image: hsm-fe-web:latest
+    build:
+      context: /../../../../hsm-fe-web
+      dockerfile: Dockerfile.dev
+    container_name: hsm-fe-web
+    ports:
+      - 42000:4200
+    networks:
+      - hsm-backend-network
+    volumes:
+      - /../../../../hsm-fe-web:/app
+      - /app/node_modules
+    env_file:
+      - ../../../.env
+    environment:
+        SECRET_PATH: /fe/web     
+        hsm_be_core_gateway_host: hsm-be-core-gateway
+    restart: unless-stopped

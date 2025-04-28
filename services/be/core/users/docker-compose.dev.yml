@@ -1,0 +1,17 @@
+services:
+  hsm-be-core-users:
+    image: hsm-be-core-users:latest
+    build:
+      context: ../../../../../hsm-be-core-users
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-core-users
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../hsm-be-core-users:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../.env
+    environment:
+      SECRET_PATH: /be/core/users
+    restart: unless-stopped

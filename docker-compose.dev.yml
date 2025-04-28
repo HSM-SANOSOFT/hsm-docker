@@ -1,0 +1,47 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    driver: bridge
+
+services:
+  hsm-fe-web:
+    extends:
+      file: ./services/fe/web/docker-compose.dev.yml
+      service: hsm-fe-web
+  hsm-be-core-gateway:
+    extends:
+      file: ./services/be/core/gateway/docker-compose.dev.yml
+      service: hsm-be-core-gateway
+  hsm-be-core-auth:
+    extends:
+      file: ./services/be/core/auth/docker-compose.dev.yml
+      service: hsm-be-core-auth
+  hsm-be-core-common:
+    extends:
+      file: ./services/be/core/common/docker-compose.dev.yml
+      service: hsm-be-core-common
+  hsm-be-core-coms:
+    extends:
+      file: ./services/be/core/coms/docker-compose.dev.yml
+      service: hsm-be-core-coms
+  hsm-be-core-users:
+    extends:
+      file: ./services/be/core/users/docker-compose.dev.yml
+      service: hsm-be-core-users
+  hsm-be-core-docs:
+    extends:
+      file: ./services/be/core/docs/docker-compose.dev.yml
+      service: hsm-be-core-docs
+  hsm-be-has-cob-gdp-transaccion:
+    extends:
+      file: ./services/be/has/cob/gdp/transaccion/docker-compose.dev.yml
+      service: hsm-be-has-cob-gdp-transaccion
+  hsm-be-has-gaa-gth-gsr-postulantes:
+    extends:
+      file: ./services/be/has/gaa/gth/gsr/postulantes/docker-compose.dev.yml
+      service: hsm-be-has-gaa-gth-gsr-postulantes
+  hsm-be-has-gaa-gth-gsr-trabajos:
+    extends:
+      file: ./services/be/has/gaa/gth/gsr/trabajo/docker-compose.dev.yml
+      service: hsm-be-has-gaa-gth-gsr-trabajos

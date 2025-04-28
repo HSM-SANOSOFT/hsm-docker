@@ -1,0 +1,18 @@
+services:
+  hsm-be-core-docs:
+    image: hsm-be-core-docs:latest
+    build:
+      context: ../../../../../hsm-be-core-docs
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-core-docs
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../hsm-be-core-docs:/app
+      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads"
+      - /app/node_modules
+    env_file:
+      - ../../../../.env
+    environment:
+      SECRET_PATH: /be/core/docs
+    restart: unless-stopped
