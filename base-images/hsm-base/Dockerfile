@@ -28,9 +28,3 @@ RUN npm install -g pnpm@latest
 WORKDIR /app
 
 CMD ["node"]
-
-COPY package*.json .
-RUN pnpm install
-COPY . .
-RUN pnpm build
-CMD ["./script.sh"]
