@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { NombreTablaService } from './services';
+import { NombreTablaRepository } from './repository';
 
 @Injectable()
 export class DatabaseRepositories {
-  constructor(public nombreTablaService: NombreTablaService) {}
+  constructor(public nombreTablaRepository: NombreTablaRepository) {}
 }

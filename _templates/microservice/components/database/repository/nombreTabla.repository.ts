@@ -1,9 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 
 import { DatabaseService } from '../database.service';
+import * as oracledb from 'oracledb';
+import { NombreTablaModel } from '../models';
 
 @Injectable()
-export class NombreTablaService {
+export class NombreTablaRepository {
   private readonly logger = new Logger();
   constructor(private readonly databaseService: DatabaseService) {}
 
