@@ -62,3 +62,6 @@
 	path = services/be/has/gaa/gth/gdn/liquidaciones/hsm-be-has-gaa-gth-gdn-liquidaciones
 	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-liquidaciones.git
 
+[submodule "services/be/core/users/hsm-be-core-users"]
+	path = services/be/core/users/hsm-be-core-users
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-users.git
