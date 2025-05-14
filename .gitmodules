@@ -1,0 +1,63 @@
+[submodule "hsm-fe-web"]
+	path = services/fe/web/hsm-fe-web
+	url = https://github.com/HSM-SANOSOFT/hsm-fe-web.git
+
+[submodule "hsm-be-core-gateway"]
+	path = services/be/core/gateway/hsm-be-core-gateway
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-gateway.git
+
+[submodule "hsm-be-core-auth"]
+	path = services/be/core/auth/hsm-be-core-auth
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-auth.git
+
+[submodule "hsm-be-core-common"]
+	path = services/be/core/common/hsm-be-core-common
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-common.git
+
+[submodule "hsm-be-core-coms"]
+	path = services/be/core/coms/hsm-be-core-coms
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-coms.git
+
+[submodule "hsm-be-core-users"]
+	path = services/be/core/users/hsm-be-core-users
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-users.git
+
+[submodule "hsm-be-core-docs"]
+	path = services/be/core/docs/hsm-be-core-docs
+	url = https://github.com/HSM-SANOSOFT/hsm-be-core-docs.git
+
+[submodule "hsm-be-has-cob-gdp-transaccion"]
+	path = services/be/has/cob/gdp/transaccion/hsm-be-has-cob-gdp-transaccion
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-cob-gdp-transaccion.git
+
+[submodule "hsm-be-has-gaa-gth-gsr-postulantes"]
+	path = services/be/has/gaa/gth/gsr/postulantes/hsm-be-has-gaa-gth-gsr-postulantes
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gsr-postulantes.git
+
+[submodule "hsm-be-has-gaa-gth-gsr-trabajos"]
+	path = services/be/has/gaa/gth/gsr/trabajo/hsm-be-has-gaa-gth-gsr-trabajos
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gsr-trabajos.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-empleados"]
+	path = services/be/has/gaa/gth/gdn/empleados/hsm-be-has-gaa-gth-gdn-empleados
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-empleados.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-empresas"]
+	path = services/be/has/gaa/gth/gdn/empresas/hsm-be-has-gaa-gth-gdn-empresas
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-empresas.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-asistencias"]
+	path = services/be/has/gaa/gth/gdn/asistencias/hsm-be-has-gaa-gth-gdn-asistencias
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-asistencias.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-deducciones"]
+	path = services/be/has/gaa/gth/gdn/deducciones/hsm-be-has-gaa-gth-gdn-deducciones
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-deducciones.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-beneficios"]
+	path = services/be/has/gaa/gth/gdn/beneficios/hsm-be-has-gaa-gth-gdn-beneficios
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-beneficios.git
+
+[submodule "hsm-be-has-gaa-gth-gdn-liquidaciones"]
+	path = services/be/has/gaa/gth/gdn/liquidaciones/hsm-be-has-gaa-gth-gdn-liquidaciones
+	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-liquidaciones.git
