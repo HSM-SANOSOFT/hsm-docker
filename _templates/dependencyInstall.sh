@@ -1,27 +1,27 @@
 #!/bin/bash
 
 # Add runtime dependencies
-pnpm add class-validator@latest -r
-pnpm add class-transformer@latest -r
-pnpm add dotenv@latest -r
-pnpm add @nestjs/microservices@latest -r
-pnpm add oracledb@latest -r
-pnpm add globals@latest -r
-pnpm add joi@latest -r
+pnpm add class-validator@latest
+pnpm add class-transformer@latest  
+pnpm add dotenv@latest  
+pnpm add @nestjs/microservices@latest  
+pnpm add oracledb@latest  
+pnpm add globals@latest  
+pnpm add joi@latest  
 
 # Add dev dependencies
-pnpm add -D @nestjs/config@latest -r
-pnpm add -D @nestjs/mapped-types@latest -r
-pnpm add -D @typescript-eslint/eslint-plugin@latest -r
-pnpm add -D @typescript-eslint/parser@latest -r
-pnpm add -D typescript-eslint@latest -r
-pnpm add -D @eslint/js@latest -r
-pnpm add -D eslint-config-prettier@latest -r
-pnpm add -D eslint-plugin-prettier@latest -r
-pnpm add -D eslint-plugin-simple-import-sort@latest -r
-pnpm add -D eslint-plugin-unused-imports@latest -r
-pnpm add -D prettier@latest -r
-pnpm add -D eslint@latest -r
-pnpm add -D @types/oracledb -r
+pnpm add -D @nestjs/config@latest  
+pnpm add -D @nestjs/mapped-types@latest  
+pnpm add -D @typescript-eslint/eslint-plugin@latest  
+pnpm add -D @typescript-eslint/parser@latest  
+pnpm add -D typescript-eslint@latest  
+pnpm add -D @eslint/js@latest  
+pnpm add -D eslint-config-prettier@latest  
+pnpm add -D eslint-plugin-prettier@latest  
+pnpm add -D eslint-plugin-simple-import-sort@latest  
+pnpm add -D eslint-plugin-unused-imports@latest  
+pnpm add -D prettier@latest  
+pnpm add -D eslint@latest  
+pnpm add -D @types/oracledb@latest
 
 echo "✅ All packages installed successfully."

@@ -14,4 +14,5 @@ services:
       - ../../../../.env
     environment:
       SECRET_PATH: /be/core/auth
+      LD_LIBRARY_PATH: /usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
