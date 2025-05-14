@@ -61,3 +61,4 @@
 [submodule "hsm-be-has-gaa-gth-gdn-liquidaciones"]
 	path = services/be/has/gaa/gth/gdn/liquidaciones/hsm-be-has-gaa-gth-gdn-liquidaciones
 	url = https://github.com/HSM-SANOSOFT/hsm-be-has-gaa-gth-gdn-liquidaciones.git
+
