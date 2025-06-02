@@ -2,6 +2,7 @@ name: hsm
 
 networks:
   hsm-backend-network:
+    name: hsm-backend-network
     driver: bridge
 
 services:
@@ -46,32 +47,32 @@ services:
       file: ./services/be/has/gaa/gth/gsr/trabajo/docker-compose.dev.yml
       service: hsm-be-has-gaa-gth-gsr-trabajos
       
-  hsm-be-has-gaa-gth-gdn-empleados:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/empleados/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-empleados
-  
-  hsm-be-has-gaa-gth-gdn-empresas:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/empresas/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-empresas
-      
-  hsm-be-has-gaa-gth-gdn-asistencias:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/asistencias/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-asistencias
-      
-  hsm-be-has-gaa-gth-gdn-deducciones:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/deducciones/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-deducciones
-      
-  hsm-be-has-gaa-gth-gdn-beneficios:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/beneficios/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-beneficios
-      
-  hsm-be-has-gaa-gth-gdn-liquidaciones:
-    extends:
-      file: ./services/be/has/gaa/gth/gdn/liquidaciones/docker-compose.dev.yml
-      service: hsm-be-has-gaa-gth-gdn-liquidaciones
+  # hsm-be-has-gaa-gth-gdn-empleados:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/empleados/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-empleados
+
+  # hsm-be-has-gaa-gth-gdn-empresas:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/empresas/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-empresas
+
+  # hsm-be-has-gaa-gth-gdn-asistencias:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/asistencias/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-asistencias
+
+  # hsm-be-has-gaa-gth-gdn-deducciones:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/deducciones/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-deducciones
+
+  # hsm-be-has-gaa-gth-gdn-beneficios:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/beneficios/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-beneficios
+
+  # hsm-be-has-gaa-gth-gdn-liquidaciones:
+  #   extends:
+  #     file: ./services/be/has/gaa/gth/gdn/liquidaciones/docker-compose.dev.yml
+  #     service: hsm-be-has-gaa-gth-gdn-liquidaciones
