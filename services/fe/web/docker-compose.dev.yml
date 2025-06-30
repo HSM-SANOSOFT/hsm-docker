@@ -1,3 +1,8 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    external: true
 services:
   hsm-fe-web:
     image: hsm-fe-web:latest
@@ -19,7 +24,3 @@ services:
         SECRET_PATH: /fe/web     
         hsm_be_core_gateway_host: hsm-be-core-gateway
     restart: unless-stopped
-    
-networks:
-  hsm-backend-network:
-    external: true

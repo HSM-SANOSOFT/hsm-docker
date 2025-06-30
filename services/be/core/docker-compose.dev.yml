@@ -1,0 +1,43 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    external: true
+    
+services:
+  hsm-be-core:
+    depends_on:
+      - hsm-be-core-gateway
+      - hsm-be-core-auth
+      - hsm-be-core-common
+      - hsm-be-core-coms
+      - hsm-be-core-users
+      - hsm-be-core-docs
+    image: alpine:latest
+    command: tail -f /dev/null
+    networks:
+      - hsm-backend-network
+  hsm-be-core-gateway:
+    extends:
+      file: ./gateway/docker-compose.dev.yml
+      service: hsm-be-core-gateway
+  hsm-be-core-auth:
+    extends:
+      file: ./auth/docker-compose.dev.yml
+      service: hsm-be-core-auth
+  hsm-be-core-common:
+    extends:
+      file: ./common/docker-compose.dev.yml
+      service: hsm-be-core-common
+  hsm-be-core-coms:
+    extends:  
+      file: ./coms/docker-compose.dev.yml
+      service: hsm-be-core-coms
+  hsm-be-core-users:
+    extends:
+      file: ./users/docker-compose.dev.yml
+      service: hsm-be-core-users
+  hsm-be-core-docs:
+    extends:    
+      file: ./docs/docker-compose.dev.yml
+      service: hsm-be-core-docs

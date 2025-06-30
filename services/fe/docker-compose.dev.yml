@@ -1,0 +1,18 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    external: true
+    
+services:
+  hsm-fe-web:
+    extends:
+      file: ./web/docker-compose.dev.yml
+      service: hsm-fe-web
+  hsm-fe:
+    depends_on:
+      - hsm-fe-web
+    image: alpine:latest
+    command: tail -f /dev/null
+    networks:
+      - hsm-backend-network

@@ -1,0 +1,24 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    external: true
+    
+services:
+  hsm-be:
+    depends_on:
+      - hsm-be-core
+      - hsm-be-has
+    image: alpine:latest
+    command: tail -f /dev/null
+    networks:
+      - hsm-backend-network
+    
+  hsm-be-core:
+    extends:
+      file: ./core/docker-compose.dev.yml
+      service: hsm-be-core
+  hsm-be-has:
+    extends:
+      file: ./has/docker-compose.dev.yml
+      service: hsm-be-has

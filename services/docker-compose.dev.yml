@@ -1,0 +1,17 @@
+name: hsm
+
+networks:
+  hsm-backend-network:
+    name: hsm-backend-network
+    driver: bridge
+
+services:
+  #hsm-be:
+  #  extends:
+  #    file: ./be/docker-compose.dev.yml
+  #    service: hsm-be
+      
+  hsm-fe:
+    extends:
+      file: ./fe/docker-compose.dev.yml
+      service: hsm-fe
