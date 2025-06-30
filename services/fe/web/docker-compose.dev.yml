@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: hsm-fe-web
     ports:
-      - 42000:4200
+      - 3001:4200
     networks:
       - hsm-backend-network
         
