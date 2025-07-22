@@ -9,11 +9,19 @@ services:
       - hsm-backend-network
     volumes:
       - ../../../../../hsm-be-core-docs:/app
-      - "C:/Users/HBAQUE/Desktop/Nueva carpeta/Archivos:/app/uploads"
       - /app/node_modules
     env_file:
       - ../../../../.env
     environment:
       SECRET_PATH: /be/core/docs
-      LD_LIBRARY_PATH: /usr/lib/oracle/12.1/client64/lib
+      HSM_BE_CORE_STORAGE_HOST: hsm-be-core-storage
+      HSM_BE_CORE_STORAGE_PORT: 9000
+      HSM_BE_CORE_STORAGE_ACCESS_KEY: admin
+      HSM_BE_CORE_STORAGE_SECRET_KEY: password
+      HSM_BE_CORE_STORAGE_BUCKET: hsm-be-core-docs
     restart: unless-stopped
+    depends_on:
+      - hsm-be-core-storage
+      - hsm-be-core-gateway
+      - hsm-be-extras-browser
+      

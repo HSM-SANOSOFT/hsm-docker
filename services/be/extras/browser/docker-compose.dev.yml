@@ -1,0 +1,13 @@
+services:
+  hsm-be-extras-browser:
+    image: jlesage/firefox:latest
+    container_name: hsm-be-extras-browser
+    ports:
+      - "5800:5800"
+    environment:
+      - DISPLAY_WIDTH=1280
+      - DISPLAY_HEIGHT=800
+      - TZ=America/Guayaquil
+    restart: unless-stopped
+    networks:
+      - hsm-backend-network

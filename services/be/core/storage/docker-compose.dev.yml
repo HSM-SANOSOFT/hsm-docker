@@ -1,0 +1,14 @@
+  services:
+    hsm-be-core-storage:
+      image: quay.io/minio/minio:latest
+      container_name: hsm-be-core-storage
+      networks:
+        - hsm-backend-network
+      command: server /data --console-address ":9001"
+      ports:
+        - "9000:9000"
+        - "9001:9001"
+      environment:
+        MINIO_ROOT_USER: admin
+        MINIO_ROOT_PASSWORD: password
+      restart: unless-stopped

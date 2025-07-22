@@ -10,6 +10,10 @@ services:
     extends:
       file: ./services/fe/web/docker-compose.dev.yml
       service: hsm-fe-web
+  hsm-be-core-storage:
+    extends:
+      file: ./services/be/core/storage/docker-compose.dev.yml
+      service: hsm-be-core-storage
   hsm-be-core-gateway:
     extends:
       file: ./services/be/core/gateway/docker-compose.dev.yml
@@ -46,6 +50,11 @@ services:
     extends:
       file: ./services/be/has/gaa/gth/gsr/trabajo/docker-compose.dev.yml
       service: hsm-be-has-gaa-gth-gsr-trabajos
+    
+  hsm-be-extras-browser:
+    extends:
+      file: ./services/be/extras/browser/docker-compose.dev.yml
+      service: hsm-be-extras-browser
       
   # hsm-be-has-gaa-gth-gdn-empleados:
   #   extends:
@@ -76,3 +85,5 @@ services:
   #   extends:
   #     file: ./services/be/has/gaa/gth/gdn/liquidaciones/docker-compose.dev.yml
   #     service: hsm-be-has-gaa-gth-gdn-liquidaciones
+
+  
