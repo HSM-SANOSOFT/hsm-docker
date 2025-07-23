@@ -16,3 +16,5 @@ services:
       SECRET_PATH: /be/core/common
       LD_LIBRARY_PATH: /usr/lib/oracle/12.1/client64/lib
     restart: unless-stopped
+    depends_on:
+      - hsm-be-core-gateway
