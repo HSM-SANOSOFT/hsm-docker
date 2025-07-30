@@ -8,7 +8,9 @@ RUN curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash && \
 FROM quay.io/minio/minio:latest
 COPY --from=builder /usr/bin/infisical /usr/bin/infisical
 COPY script.sh /script.sh
-RUN chmod +x /script.sh
+COPY start-minio.sh /start-minio.sh
+RUN chmod +x /script.sh && \
+  chmod +x /start-minio.sh
 
 # This is critical to remove MinIO's default ENTRYPOINT
 ENTRYPOINT ["/script.sh"]

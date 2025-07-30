@@ -19,5 +19,5 @@ services:
     depends_on:
       - hsm-be-core-storage
       - hsm-be-core-gateway
-      - hsm-be-extras-browser
+      #- hsm-be-extras-browser
       
