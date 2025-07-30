@@ -1,14 +1,17 @@
   services:
     hsm-be-core-storage:
-      image: quay.io/minio/minio:latest
       container_name: hsm-be-core-storage
+      image: hsm-be-core-storage:latest
+      build:
+        context: ./
+        dockerfile: Dockerfile.dev
       networks:
         - hsm-backend-network
-      command: server /data --console-address ":9001"
       ports:
         - "9000:9000"
         - "9001:9001"
+      env_file:
+      - ../../../../.env
       environment:
-        MINIO_ROOT_USER: admin
-        MINIO_ROOT_PASSWORD: password
+        SECRET_PATH: /be/core/storage
       restart: unless-stopped

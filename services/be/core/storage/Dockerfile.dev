@@ -1,0 +1,14 @@
+# Stage 1: builder
+FROM debian:bookworm as builder
+RUN apt-get update && apt-get install -y curl bash
+RUN curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash && \
+  apt-get update && apt-get install -y infisical
+
+# Stage 2: MinIO runtime
+FROM quay.io/minio/minio:latest
+COPY --from=builder /usr/bin/infisical /usr/bin/infisical
+COPY script.sh /script.sh
+RUN chmod +x /script.sh
+
+# This is critical to remove MinIO's default ENTRYPOINT
+ENTRYPOINT ["/script.sh"]
