@@ -15,4 +15,6 @@ services:
     environment:
       SECRET_PATH: /be/core/coms
       LD_LIBRARY_PATH: /usr/lib/oracle/12.1/client64/lib
+    depends_on:
+      - hsm-be-core-gateway
     restart: unless-stopped
