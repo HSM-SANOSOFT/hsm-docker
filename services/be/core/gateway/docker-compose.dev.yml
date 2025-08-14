@@ -27,4 +27,5 @@ services:
       hsm_be_has_cob_gdp_transaccion_host: hsm-be-has-cob-gdp-transaccion
       hsm_be_has_cob_gdp_compensacion_host: hsm-be-has-cob-gdp-compensacion
       hsm_be_has_cob_gdp_recaudo_host: hsm-be-has-cob-gdp-recaudo
+      hsm_be_his_paciente_host: hsm-be-his-paciente
     restart: unless-stopped

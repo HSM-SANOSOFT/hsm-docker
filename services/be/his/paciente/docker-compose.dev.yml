@@ -1,0 +1,20 @@
+services:
+  hsm-be-his-paciente:
+    image: hsm-be-his-paciente:latest
+    build:
+      context: ../../../../../hsm-be-his-paciente
+      dockerfile: Dockerfile.dev
+    container_name: hsm-be-his-paciente
+    networks:
+      - hsm-backend-network
+    volumes:
+      - ../../../../../hsm-be-his-paciente:/app
+      - /app/node_modules
+    env_file:
+      - ../../../../.env
+    environment:
+      SECRET_PATH: /be/his/paciente
+      LD_LIBRARY_PATH: /usr/lib/oracle/12.1/client64/lib
+    restart: unless-stopped
+    depends_on:
+      - hsm-be-core-gateway
